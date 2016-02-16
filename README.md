@@ -1,3 +1,3 @@
-# Materials
+# Class Materials
 
-Materials for each class.
+Data/Code for each lecture.
