@@ -64,7 +64,7 @@ Cliche: Working Smarter, Not Harder
 * Don’t be stuck for more than 20 minutes. This takes self-awareness and mindfulness.
 * Seek expert advice; You’ll be on the other side soon enough
     + Your peers. 
-    + Me. Note I do prefer
+    + Me. Note I do prefer speaking in person than email.
 
 
 
@@ -76,7 +76,7 @@ Building Our Data Toolbox
 
 Building Our Data Toolbox
 ========================================================
-For the first part of the class, we emphasize the two more important tools:
+For the first part of the class, we emphasize the two most important tools:
 
 * Tools for **manipulating/wrangling** your data: [`dplyr`](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) package
 * Tools for **visualizing data**: [`ggplot2`](http://ggplot2.org/) package (an implementation of the [Grammar of Graphics](http://vita.had.co.nz/papers/layered-grammar.html))
