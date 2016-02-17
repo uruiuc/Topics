@@ -51,27 +51,26 @@ mtcars %>%
 
 
 #------------------------------------------------------------------------------
-# Load 
+# More dplyr practice: UC Berkeley Admissions Data
 #------------------------------------------------------------------------------
+# Using the UCBAdmissions data set you just loaded
 
 
 
 
-
-
-
-
-
-
-
-
+#------------------------------------------------------------------------------
+# More dplyr practice: Financial Aid Data
+#------------------------------------------------------------------------------
 library(rvest)
-webpage <- read_html("http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/")
-# Look at first of all HTML tables
-wp_data <- webpage %>% 
+webpage <- "http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/"
+wp_data <- webpage %>%
+  read_html() %>% 
   html_nodes("table") %>% 
   .[[1]] %>% 
   html_table()
+View(wp_data)
+
+
 
 
 

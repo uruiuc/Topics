@@ -37,6 +37,41 @@ Research here doesn't not mean necessary publishing in journals, but more simply
 
 
 
+Today's Data
+========================================================
+
+The University of California Berkeley was sued in 1973 for bias against women who had applied for admission to graduate schools. We consider the $n=4526$ people who applied to the 6 largest departments.
+
+
+```r
+data("UCBAdmissions")
+UCBAdmissions %>% as.data.frame() %>% head()
+```
+
+```
+     Admit Gender Dept Freq
+1 Admitted   Male    A  512
+2 Rejected   Male    A  313
+3 Admitted Female    A   89
+4 Rejected Female    A   19
+5 Admitted   Male    B  353
+6 Rejected   Male    B  207
+```
+
+
+
+Today's Data
+========================================================
+
+We also consider data on tuition and financial aid from various institutions across
+the United States from the
+<a href="http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/" target="_blank">Washington Post</a>.
+
+
+
+
+
+
 Loading Data
 ========================================================
 
@@ -45,7 +80,7 @@ We will explore two methods for loading data:
 * Via a Comma Separated Values (CSV) file, from 
     + Excel files
     + Google docs
-* Via the web using the `rvest` package
+* Via the web using the [`rvest`](http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/) package in RStudio package
 
 
 
@@ -106,28 +141,19 @@ From the Google Docs menu bar (not your browser's menu bar):
 Basic Webscraping
 ========================================================
 
-The other way we'll load is by basic **web-scraping** via the `rvest` package.  Click to the following 
-<a href="http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/" target="_blank">article</a> on financial aid for univerisities at the Washington Post.
-
-
-
-Basic Webscraping
-========================================================
-
-Run the following code:
+The other way we'll load is by basic **web-scraping** via the [`rvest`](http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/) package in RStudio package. Run the following code in RStudio:
 
 
 ```r
 library(rvest)
-webpage <- read_html("http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/")
-wp_data <- webpage %>% 
+webpage <- "http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/"
+wp_data <- webpage %>%
+  read_html() %>% 
   html_nodes("table") %>% 
   .[[1]] %>% 
   html_table()
 View(wp_data)
 ```
-
-Don't worry about understanding the mechanics for now, just load it.
 
 
 
