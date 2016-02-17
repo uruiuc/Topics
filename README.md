@@ -2,7 +2,11 @@
 
 The course syllabus (and setup instructions) can be found [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
-
+* **Lec03: Joins**
+    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec03" target="_blank">Slides</a>: 
+    + Files:
+        * `Lec03.R` Exercise.
+        * `states.csv`
 * **Lec02: Loading Data**
     + <a href="http://rpubs.com/rudeboybert/MATH216_Lec02" target="_blank">Slides</a>: The importance of minimizing prerequisites to research, loading data into RStudio via CSV files or webscraping.
     + Files:
