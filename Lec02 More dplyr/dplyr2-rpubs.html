@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>More dplyr</title>
+  <title>Loading Data</title>
     
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -749,7 +749,7 @@ hljs.initHighlightingOnLoad();
   <div class="slides">
 
 <section data-state="section" data-transition="linear" data-transition-speed="default">
-<h1>More dplyr</h1><p>Albert Y. Kim<br/>Wednesday 2016&#x2F;2&#x2F;16</p>
+<h1>Loading Data</h1><p>Albert Y. Kim<br/>Wednesday 2016&#x2F;2&#x2F;16</p>
 
 <div class="slideContent" >
 
@@ -757,150 +757,199 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Data Manipulation</h3>
+<h3>Preparation for Today</h3>
 <div class="slideContent" >
-<p>We now discuss a <strong>grammar for data manipulation</strong>.  Other terms for &ldquo;data manipulation&rdquo; include:</p>
-
 <ul>
-<li><strong>data wrangling</strong></li>
-<li><strong>data munging</strong></li>
-<li>The <a href="http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html">New York Times</a> takes a rather pessimistic view.</li>
+<li>Download the relevant files for today&#39;s lecture in Topics at  <a href="https://github.com/Middlebury-Data-Science">https://github.com/Middlebury-Data-Science</a></li>
+<li>Open <code>UCBAdmissions.xlsx</code> in Excel</li>
+<li>Open the <a href="https://docs.google.com/spreadsheets/d/1EVgkh3wgIWZCxzCKAEDie7f8YmKQ9FhYdKVIO4Fwm0E/edit?pref=2&amp;pli=1#gid=0">HW schedule</a> in Google Docs</li>
+<li>Install the <code>rvest</code> package in RStudio</li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Tidy Data</h3>
-<div class="mediaInline slideContent" >
-<p>Deceptively powerful concept of tidy data, represented in R either as a <code>data.frame</code> or a <code>tbl_df</code> table data frame:</p>
+<h3>Statistics Pedagogy</h3>
+<div class="slideContent" >
+<p>From the American Statistician (Cobb 2015): <a href="http://www.tandfonline.com/doi/full/10.1080/00031305.2015.1093029#abstract">Mere Renovation is Too Little Too Late: We Need to Rethink our Undergraduate Curriculum from the Ground Up</a></p>
 
-<p><img src="http://garrettgman.github.io/images/tidy-1.png" alt=""/> </p>
+<p>Cobb advocates &ldquo;minimizing prerequisites to research&rdquo;:</p>
 
-<p>Example of Codd&#39;s <a href="https://en.wikipedia.org/wiki/Third_normal_form">3rd Normal Form</a> of database normalization:</p>
+<blockquote>
+<blockquote>
+<p>In the Humanities, students in a first course engage with original sources. You do not just prepare your students to read Austen; they read Austen. You do not just prepare students to hear Bach; they hear Bach.</p>
+</blockquote>
+</blockquote>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Tidy Data</h3>
+<h3>Statistics Pedagogy</h3>
 <div class="slideContent" >
+<p>In the context of this class: you need to be doing research QUICK!</p>
+
+<p>Research here doesn&#39;t not mean necessary publishing in journals, but more simply <strong>looking at real data that&#39;s relevant to the student</strong>.</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Loading Data</h3>
+<div class="slideContent" >
+<p>We will explore two methods for loading data:</p>
+
+<ul>
+<li>Via a Comma Separated Values (CSV) file, from 
+
+<ul>
+<li>Excel files</li>
+<li>Google docs</li>
+</ul></li>
+<li>Via the web using the <code>rvest</code> package</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>CSV Files</h3>
+<div class="slideContent" >
+<ul>
+<li>An Excel <code>.xlsx</code> file not only contains data, but also lots of <a href="https://www.google.com/search?q=metadata&amp;oq=metadata&amp;aqs=chrome..69i57j69i65j0l4.1567j0j9&amp;sourceid=chrome&amp;es_sm=119&amp;ie=UTF-8">metadata</a>, i.e. data about data, that we don&#39;t need.</li>
+<li>A CSV file is just data, where values for a given row are separated by commas. It is the most flexible way to share a table of data.</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Excel Files</h3>
+<div class="slideContent" >
+<p>To load data in an Excel spreadsheet in RStudio, we need the values to be in <strong>tidy</strong>
+format:</p>
+
+<ul>
+<li>Data are in a table: i.e. perfect rectangular shpe</li>
+<li>Columns are variables</li>
+<li>Rows are observations, with the exception of the first row which are the variable names AKA a <em>header</em> row.</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Excel Files</h3>
+<div class="slideContent" >
+<p>We convert to CSV format to eliminate the metadata:</p>
+
 <ol>
-<li>Each <strong>variable</strong> forms a column.</li>
-<li>Each <strong>observation</strong> forms a row.</li>
-<li>Each type of <strong>observational unit</strong> forms a table.</li>
+<li>From Excel&#39;s menu bar -&gt; <em>File</em> -&gt; <em>Save As&hellip;</em> -&gt; <em>Format</em> -&gt; <em>Windows Comma Separated (.csv)</em></li>
+<li>Add <code>.csv</code> to the filename to <em>Save As</em>. i.e. your filename should be <code>UCBAdmissions.csv</code></li>
+<li>Click <em>Continue</em></li>
 </ol>
 
-<p>We will revisit <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">this concept</a> later.</p>
-
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Grammar of Data Manipulation</h3>
+<h3>Excel Files</h3>
 <div class="slideContent" >
-<p>~85% of data manipulations can be achieved by the following <strong>verbs</strong> on tidy data.</p>
+<p>We load the CSV file into R.</p>
 
 <ol>
-<li><strong><code>filter()</code></strong>: subset rows matching criteria</li>
-<li><strong><code>select()</code></strong>: subset columns chosen by name</li>
-<li><strong><code>mutate()</code></strong>: add new variables by mutating existing ones</li>
-<li><strong><code>arrange()</code></strong>: reorder rows</li>
-<li><strong><code>summarise()</code></strong>: reduce variables to values</li>
+<li>From RStudio -&gt; <em>Environment</em> Panel -&gt; <em>Import Dataset</em> -&gt; <em>From Text File&hellip;</em> -&gt; Click on <code>UCBAdmissions.csv</code></li>
+<li>Make sure <em>Heading</em> is set to <em>Yes</em>. This indicates that the first row is a <em>header</em> row.</li>
+<li>Click <em>Import</em></li>
 </ol>
 
-<p>Each of these verbs is a command from the <code>dplyr</code> package.</p>
+<p>Note in your console panel R spits out the command to do this automatically. You can copy this line into your R scripts.</p>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Grammar of Data Manipulation</h3>
+<h3>Google Docs</h3>
 <div class="slideContent" >
-<p>The beauty of this package is that it is built on principles that are
-programming language/software <strong>agnostic</strong>, specifically <a href="https://en.wikipedia.org/wiki/Database_normalization">Database
-Normalization</a>, which SQL
-is based on as well.</p>
+<p>From the Google Docs menu bar (not your browser&#39;s menu bar):</p>
 
-<p>Even if later on your don&#39;t end up using R, the previous five verbs is still how
-you would think about manipulating your data.</p>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Other Important Concepts</h3>
-<div class="slideContent" >
 <ul>
-<li><strong>boolean algebra</strong>:  statements that evaluate to <code>TRUE</code> or <code>FALSE</code>.</li>
-<li><strong>grouping</strong>: define groupings on a categorical variable via the <code>group_by()</code>
-command that is useful for <code>summarise()</code>&#39;ations.</li>
-<li><strong>piping</strong>: sequences of commands.</li>
+<li><em>File</em> -&gt; <em>Download As</em> -&gt; <em>Comma-separated values</em> -&gt; Save the file to your computer.</li>
+<li>Repeat the steps from the last slide to load into R.</li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Other Concepts:  piping</h3>
+<h3>Basic Webscraping</h3>
 <div class="slideContent" >
-<p>piping originates from the <code>magrittr</code> package, which the <code>dplyr</code> package loads
-by default.</p>
-
-<p>It allows you to take the output of one function and <strong>pipe</strong> it as the input of
-the next function, and build a sequence.</p>
+<p>The other way we&#39;ll load is by basic <strong>web-scraping</strong> via the <code>rvest</code> package.  Click to the following 
+<a href="http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/" target="_blank">article</a> on financial aid for univerisities at the Washington Post.</p>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Other Concepts:  piping</h3>
+<h3>Basic Webscraping</h3>
 <div class="slideContent" >
-<p>The <code>%&gt;%</code> command, described as &ldquo;<em>then</em>&rdquo;. This saves you from nested parentheses.</p>
+<p>Run the following code:</p>
 
-<p>For example ex:  say you want to apply functions <code>h()</code> and <code>g()</code> and then <code>f()</code> on data <code>x</code>.  You can do</p>
+<pre><code class="r">library(rvest)
+webpage &lt;- read_html(&quot;http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/&quot;)
+wp_data &lt;- webpage %&gt;% 
+  html_nodes(&quot;table&quot;) %&gt;% 
+  .[[1]] %&gt;% 
+  html_table()
+View(wp_data)
+</code></pre>
 
-<ul>
-<li><code>f(g(h(x)))</code> OR</li>
-<li><code>h(x) %&gt;% g() %&gt;% f()</code></li>
-</ul>
-
-<p>This allows for a <strong>sequential</strong> breaking down of tasks, allowing you and <strong>more
-importantly</strong> others to understand what you are doing!</p>
+<p>Don&#39;t worry about understanding the mechanics for now, just load it.</p>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Other Concepts:  Boolean Algebra</h3>
+<h3>Basic Webscraping</h3>
 <div class="slideContent" >
-<ul>
-<li><code>==</code> equals
+<p>The rvest package works by scraping HTML code used to make webpages.  To view a webpage&#39;s raw HTML code:</p>
 
 <ul>
-<li>Ex: <code>5 == 3</code> yields <code>FALSE</code></li>
-</ul></li>
-<li><code>!=</code> not equal to
-
-<ul>
-<li>Ex: <code>5 != 3</code> yields <code>TRUE</code></li>
-</ul></li>
-<li><code>|</code> or
-
-<ul>
-<li>Ex: <code>5 &lt; 3 | 5 &lt; 10</code> yields <code>TRUE</code></li>
-</ul></li>
-<li><code>&amp;</code> and
-
-<ul>
-<li>Ex: <code>5 &lt; 3 | 5 &lt; 10</code> yields <code>FALSE</code></li>
-</ul></li>
-<li><code>%in%</code> is x in y?
-
-<ul>
-<li>Ex:  <code>c(1, 3, 2) %in% c(1, 2)</code> yields <code>TRUE FALSE  TRUE</code></li>
-</ul></li>
+<li>In Google Chrome&#39;s menu bar -&gt; View -&gt; Developer -&gt; View Source</li>
+<li>In Firefox&#39;s menu bar -&gt; Tools -&gt; Web Developer -&gt; Page Source</li>
 </ul>
+
+<p>The <code>html_nodes()</code> function looks for HTML tags.</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>HW 0</h3>
+<div class="slideContent" >
+<p>R Markdown</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Data Files</h3>
+<div class="slideContent" >
+<p>CSV. No fluff, just the important stuff.</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Berkeley Admissions Data</h3>
+<div class="slideContent" >
+<pre><code class="r"># Write UC Berkeley data to CSV.
+library(readr)
+data(&quot;UCBAdmissions&quot;)
+UCBAdmissions &lt;- UCBAdmissions %&gt;% as.data.frame()
+write_csv(UCBAdmissions, path = &quot;./Lec02 More dplyr/UCBAdmissions.csv&quot;)
+</code></pre>
 
 </div>
 

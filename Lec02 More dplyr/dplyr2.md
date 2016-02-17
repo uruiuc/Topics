@@ -1,4 +1,4 @@
-More dplyr
+Loading Data
 ========================================================
 author: Albert Y. Kim
 date: Wednesday 2016/2/16
@@ -7,23 +7,136 @@ date: Wednesday 2016/2/16
 
 
 
-Data Files
+Preparation for Today
 ========================================================
 
-CSV. No fluff, just the important stuff.
+* Download the relevant files for today's lecture in Topics at  [https://github.com/Middlebury-Data-Science](https://github.com/Middlebury-Data-Science)
+* Open `UCBAdmissions.xlsx` in Excel
+* Open the [HW schedule](https://docs.google.com/spreadsheets/d/1EVgkh3wgIWZCxzCKAEDie7f8YmKQ9FhYdKVIO4Fwm0E/edit?pref=2&pli=1#gid=0) in Google Docs
+* Install the [`rvest`](http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/) package in RStudio
 
 
 
-
-Berkeley Admissions Data
+Statistics Pedagogy
 ========================================================
+
+From the American Statistician (Cobb 2015): [Mere Renovation is Too Little Too Late: We Need to Rethink our Undergraduate Curriculum from the Ground Up](http://www.tandfonline.com/doi/full/10.1080/00031305.2015.1093029#abstract)
+
+Cobb advocates "minimizing prerequisites to research":
+
+>> In the Humanities, students in a first course engage with original sources. You do not just prepare your students to read Austen; they read Austen. You do not just prepare students to hear Bach; they hear Bach.
+
+
+
+Statistics Pedagogy
+========================================================
+
+In the context of this class: you need to be doing research QUICK!
+
+Research here doesn't not mean necessary publishing in journals, but more simply **looking at real data that's relevant to the student**.
+
+
+
+Loading Data
+========================================================
+
+We will explore two methods for loading data:
+
+* Via a Comma Separated Values (CSV) file, from 
+    + Excel files
+    + Google docs
+* Via the web using the `rvest` package
+
+
+
+CSV Files
+========================================================
+
+* An Excel `.xlsx` file not only contains data, but also lots of [metadata](https://www.google.com/search?q=metadata&oq=metadata&aqs=chrome..69i57j69i65j0l4.1567j0j9&sourceid=chrome&es_sm=119&ie=UTF-8), i.e. data about data, that we don't need.
+* A CSV file is just data, where values for a given row are separated by commas. It is the most flexible way to share a table of data.
+
+
+
+Excel Files
+========================================================
+
+To load data in an Excel spreadsheet in RStudio, we need the values to be in **tidy**
+format:
+
+* Data are in a table: i.e. perfect rectangular shpe
+* Columns are variables
+* Rows are observations, with the exception of the first row which are the variable names AKA a *header* row.
+
+
+
+Excel Files
+========================================================
+
+We convert the `UCBAdmissions.xlsx` file to CSV format to eliminate the metadata:
+
+1. From Excel's menu bar -> *File* -> *Save As...* -> *Format* -> *Windows Comma Separated (.csv)*
+1. Add `.csv` to the filename to *Save As*. i.e. your filename should be `UCBAdmissions.csv`
+1. Click *Continue*
+
+
+
+Excel Files
+========================================================
+
+We load the CSV file into R.
+
+1. From RStudio -> *Environment* Panel -> *Import Dataset* -> *From Text File...* -> Click on `UCBAdmissions.csv`
+1. Make sure *Heading* is set to *Yes*. This indicates that the first row is a *header* row.
+1. Click *Import*
+
+Note in your console panel R spits out the command to do this automatically. You can copy this line into your R scripts.
+
+
+
+Google Docs
+========================================================
+
+From the Google Docs menu bar (not your browser's menu bar):
+
+* *File* -> *Download As* -> *Comma-separated values* -> Save the file to your computer.
+* Repeat the steps from the last slide to load into R.
+
+
+
+Basic Webscraping
+========================================================
+
+The other way we'll load is by basic **web-scraping** via the `rvest` package.  Click to the following 
+<a href="http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/" target="_blank">article</a> on financial aid for univerisities at the Washington Post.
+
+
+
+Basic Webscraping
+========================================================
+
+Run the following code:
 
 
 ```r
-# Write UC Berkeley data to CSV.
-library(readr)
-data("UCBAdmissions")
-UCBAdmissions <- UCBAdmissions %>% as.data.frame()
-write_csv(UCBAdmissions, path = "./Lec02 More dplyr/UCBAdmissions.csv")
+library(rvest)
+webpage <- read_html("http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/")
+wp_data <- webpage %>% 
+  html_nodes("table") %>% 
+  .[[1]] %>% 
+  html_table()
+View(wp_data)
 ```
 
+Don't worry about understanding the mechanics for now, just load it.
+
+
+
+Basic Webscraping
+========================================================
+
+The rvest package works by scraping HTML code used to make webpages.  To view a webpage's raw HTML code:
+
+* In Google Chrome's menu bar -> View -> Developer -> View Source
+* In Firefox's menu bar -> Tools -> Web Developer -> Page Source
+
+The `html_nodes()` function looks for HTML tags.
