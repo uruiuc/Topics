@@ -24,7 +24,7 @@ Preparation for Today
 
 * Download the relevant files for today's lecture at  [https://github.com/Middlebury-Data-Science/Topics](https://github.com/Middlebury-Data-Science/Topics)
 * Open `UCBAdmissions.xlsx` in Excel
-* Open the [HW schedule](https://docs.google.com/spreadsheets/d/1EVgkh3wgIWZCxzCKAEDie7f8YmKQ9FhYdKVIO4Fwm0E/edit?pref=2&pli=1#gid=0) in Google Docs
+* Open the HW schedule in Google Docs: [http://bit.ly/1oJKpVS](http://bit.ly/1oJKpVS)
 * Install the [`rvest`](http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/) package in RStudio
 
 
@@ -54,11 +54,6 @@ Today's Data
 
 The University of California Berkeley was sued in 1973 for bias against women who had applied for admission to graduate schools. We consider the $n=4526$ people who applied to the 6 largest departments.
 
-
-```r
-data("UCBAdmissions")
-UCBAdmissions %>% as.data.frame() %>% head()
-```
 
 ```
      Admit Gender Dept Freq
@@ -102,7 +97,7 @@ CSV Files
 * An Excel `.xlsx` file not only contains data, but also lots of [metadata](https://www.google.com/search?q=metadata&oq=metadata&aqs=chrome..69i57j69i65j0l4.1567j0j9&sourceid=chrome&es_sm=119&ie=UTF-8), i.e. data about data, that we don't need.
 * A CSV file is just data, where values for a given row are separated by commas. It is the most flexible way to share a table of data.
 
-
+CSV = No fluff, just stuff.
 
 Excel Files
 ========================================================

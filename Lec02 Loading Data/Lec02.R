@@ -51,14 +51,6 @@ mtcars %>%
 
 
 #------------------------------------------------------------------------------
-# More dplyr practice: UC Berkeley Admissions Data
-#------------------------------------------------------------------------------
-# Using the UCBAdmissions data set you just loaded
-
-
-
-
-#------------------------------------------------------------------------------
 # More dplyr practice: Financial Aid Data
 #------------------------------------------------------------------------------
 library(rvest)
@@ -70,101 +62,72 @@ wp_data <- webpage %>%
   html_table()
 View(wp_data)
 
+# Let's view the data in the console
+wp_data
 
-
-
-
-
-
-
+# This is unwieldy, so let's convert to tbl_df format so that the output isn't overwhelming
+wp_data <- wp_data %>% tbl_df()
+wp_data
 
 
 
 #------------------------------------------------------------------------------
-# Clean colnames and data types.  We will study such things as we go.
+# Step 0: Data Cleaning
 #------------------------------------------------------------------------------
-# Function to clean col names:  this takes as input a tidy data frame, removes
-# all non alphanumeric characters in the column names and sets them to lower
-# case.
-clean.names <- function(df){
-  colnames(df) <- gsub("[^[:alnum:]]", "", colnames(df))
-  colnames(df) <- tolower(colnames(df))
-  return(df)
-}
+# The column names are a little unwieldy. Let's rename them
+# using: rename(data_frame, NEW_NAME = OLD_NAME)
+#
+# Some of the variable names have spaces, and dealing with spaces in 
+# programming is a pain in the ass (PITA). Note how we treat the variable names
+# that have spaces differently: we surround them with ` (top left of keyboard).
+wp_data <- wp_data %>%
+  rename(
+    school = School,
+    state = State,
+    sector = Sector,
+    comp_fee = `Tuition, fees, room and board 2013-14`,
+    p_no_need_grant = `Percent of freshmen receiving no-need grants from school`,
+    ave_no_need_grant = `Average no-need award to freshmen`,
+    p_need_grant = `Percent receiving need-based grants from school`
+  ) 
+wp_data
 
-# Function to remove all $ signs and commas
-currency.to.numeric <- function(x){
+# All money related values are not numerical variables but rather character 
+# strings (note the chr under the variables comp_fee and ave_no_need_grant).
+# We need to convert these character strings to numerical using a function.
+# Don't worry about understanding this function for now, we'll talk about
+# manipulating text data later.
+
+currency_to_numeric <- function(x){
+  # Convert currencies to numeric i.e. strip dollar signs and commas
   x <- gsub('\\$','', as.character(x))
   x <- gsub('\\,','', as.character(x))
   x <- as.numeric(x)
   return(x)
 }
+currency_to_numeric("$19,999")
 
-# The data is a bit messy at first:  some missing values, column names are too
-# long
-View(wp_data)
-
-# Guess:
-# * What does the clean.names() function do?
-# * What does the %<>% does?  Ask me if you're not sure.
-# * The mutate command from last time
-wp_data %<>%
-  clean.names() %>%
-  rename(
-    comp_fee = tuitionfeesroomandboard201314,
-    p_no_need_grant = percentoffreshmenreceivingnoneedgrantsfromschool,
-    ave_no_need_grant = averagenoneedawardtofreshmen,
-    p_need_grant = percentreceivingneedbasedgrantsfromschool
-  ) %>%
+# mutate the data set to change all curr
+wp_data <- wp_data %>% 
   mutate(
-    # Convert character strings to factors i.e. categorical variables
-    state = as.factor(state),
-    sector = as.factor(sector),
-    # Convert currencies to numeric i.e. strip dollar signs and commas
-    comp_fee = currency.to.numeric(comp_fee),
-    ave_no_need_grant = currency.to.numeric(ave_no_need_grant),
-    # Using the ifelse() command, replace missing values with .5
-    p_no_need_grant = ifelse(is.na(p_no_need_grant), .5, p_no_need_grant))
+    comp_fee = currency_to_numeric(comp_fee),
+    ave_no_need_grant = currency_to_numeric(ave_no_need_grant)
+  )
+wp_data
 
-# Now look at it.  A bit cleaner
-View(wp_data)
+
+
+# Using the ifelse() command, replace missing values with .5
+# p_no_need_grant = ifelse(is.na(p_no_need_grant), .5, p_no_need_grant))
+
 
 
 #------------------------------------------------------------------------------
-# Geocode and map data
+# Step 1: Creating a new variable
 #------------------------------------------------------------------------------
-# Using the geocode() function from the ggmap package, get geocodes of school
-# locations based on school name by searching Google maps.  The code takes about
-# two minutes; uncomment and run if you're curious:
-#
-# gc <- do.call(rbind, lapply(as.character(wp_data$school), geocode))
-# wp_data %<>% mutate(lon=gc$lon, lat=gc$lat)
-
-# Or read in previously calculated geocodes
-x <- getURL("https://raw.githubusercontent.com/majerus/paideia_reed_college/master/data_science_and_visualization/geocodes.csv")
-gc <- read.csv(text = x)
-gc$X <- NULL
-wp_data %<>% mutate(lon=gc$lon, lat=gc$lat)
-
-# Let's take a quick look at where all the colleges in the data are located using
-# the leaflet() package:
-leaflet(wp_data) %>%
-  addTiles() %>%
-  setView(-93.65, 42.0285, zoom = 3) %>%
-  addCircles(wp_data$lon, wp_data$lat)
 
 
-# It might be helpful to color code the schools based on the average no need
-# grant variable in the data by defining a new color palette where darker
-# indicates higher values
-pal <- colorQuantile("YlOrRd", NULL, n = 6)
 
-leaflet(wp_data) %>%
-  addTiles() %>%
-  setView(-93.65, 42.0285, zoom = 3) %>%
-  addCircles(wp_data$lon, wp_data$lat) %>%
-  addCircles(wp_data$lon, wp_data$lat, color = ~pal(ave_no_need_grant)) %>%
-  addCircleMarkers(wp_data$lon, wp_data$lat, color = ~pal(ave_no_need_grant))
 
 
 
@@ -175,7 +138,7 @@ leaflet(wp_data) %>%
 table(wp_data$state)
 state.list <- c('AL', 'AR', 'FL', 'GA', 'KY', 'LA', 'NC', 'SC', 'TN', 'TX')
 
-wp_data %<>%
+wp_data <- wp_data %>%
   mutate(south = ifelse(state %in% state.list, 'south', 'non-south'))
 
 # EXERCISE: create a region (NE) variable by changing the above code to create a
@@ -189,15 +152,15 @@ state.list <- c('CT', 'DC', 'DE', 'MA', 'MD', 'ME', 'NH', 'NJ', 'NY', 'PA', 'RI'
 #------------------------------------------------------------------------------
 # Arranging/sorting the data by region (south)
 # First let's sort the data by the south region variable
-wp_data %<>%
+wp_data <- wp_data %>%
   arrange(south)
 
 # The default for arrange is ascending, let's put that in descending order instead
-wp_data %<>%
+wp_data <- wp_data %>%
   arrange(desc(south))
 
 # It might be more useful to sort the data by multiple variables
-wp_data %<>%
+wp_data <- wp_data %>%
   arrange(desc(south), ave_no_need_grant)
 
 # We can also create a NEW data frame with just these variables while executing this code
