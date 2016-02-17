@@ -12,7 +12,7 @@ library(dplyr)
 Preparation for Today
 ========================================================
 
-* Download the relevant files for today's lecture in Topics at  [https://github.com/Middlebury-Data-Science](https://github.com/Middlebury-Data-Science)
+* Download the relevant files for today's lecture at  [https://github.com/Middlebury-Data-Science/Topics](https://github.com/Middlebury-Data-Science/Topics)
 * Open `UCBAdmissions.xlsx` in Excel
 * Open the [HW schedule](https://docs.google.com/spreadsheets/d/1EVgkh3wgIWZCxzCKAEDie7f8YmKQ9FhYdKVIO4Fwm0E/edit?pref=2&pli=1#gid=0) in Google Docs
 * Install the [`rvest`](http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/) package in RStudio

@@ -1,5 +1,8 @@
 # Lecture Topics
 
+The course syllabus (and setup instructions) can be found [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
+
+
 * **Lec02: More `dplyr`**
     + <a href="http://rpubs.com/rudeboybert/MATH216_Lec02" target="_blank">Slides</a>: 
     + Files: 
