@@ -736,6 +736,16 @@ hljs.initHighlightingOnLoad();
 </script>
 
    
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    showProcessingMessages: false,
+    messageStyle: "none"
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   
 
 
@@ -757,13 +767,27 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
+<h3>RIP Moodle</h3>
+<div class="slideContent" >
+<p>We are not going to work off moodle anymore, rather</p>
+
+<ul>
+<li>The <a href="https://github.com/Middlebury-Data-Science">Middlebury Data Science</a> organization homepage.</li>
+<li>Homeworks will be posted on above page.</li>
+<li>All lecture material/instructions will be posted at <a href="https://github.com/Middlebury-Data-Science/Topics">github.com/Middlebury-Data-Science/Topics</a></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
 <h3>Preparation for Today</h3>
 <div class="slideContent" >
 <ul>
-<li>Download the relevant files for today&#39;s lecture in Topics at  <a href="https://github.com/Middlebury-Data-Science">https://github.com/Middlebury-Data-Science</a></li>
+<li>Download the relevant files for today&#39;s lecture at  <a href="https://github.com/Middlebury-Data-Science/Topics">https://github.com/Middlebury-Data-Science/Topics</a></li>
 <li>Open <code>UCBAdmissions.xlsx</code> in Excel</li>
 <li>Open the <a href="https://docs.google.com/spreadsheets/d/1EVgkh3wgIWZCxzCKAEDie7f8YmKQ9FhYdKVIO4Fwm0E/edit?pref=2&amp;pli=1#gid=0">HW schedule</a> in Google Docs</li>
-<li>Install the <code>rvest</code> package in RStudio</li>
+<li>Install the <a href="http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/"><code>rvest</code></a> package in RStudio</li>
 </ul>
 
 </div>
@@ -796,6 +820,37 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
+<h3>Today&#x27;s Data</h3>
+<div class="slideContent" >
+<p>The University of California Berkeley was sued in 1973 for bias against women who had applied for admission to graduate schools. We consider the \( n=4526 \) people who applied to the 6 largest departments.</p>
+
+<pre><code class="r">data(&quot;UCBAdmissions&quot;)
+UCBAdmissions %&gt;% as.data.frame() %&gt;% head()
+</code></pre>
+
+<pre><code>     Admit Gender Dept Freq
+1 Admitted   Male    A  512
+2 Rejected   Male    A  313
+3 Admitted Female    A   89
+4 Rejected Female    A   19
+5 Admitted   Male    B  353
+6 Rejected   Male    B  207
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Today&#x27;s Data</h3>
+<div class="slideContent" >
+<p>We also consider data on tuition and financial aid from various institutions across
+the United States from the
+<a href="http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/" target="_blank">Washington Post</a>.</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
 <h3>Loading Data</h3>
 <div class="slideContent" >
 <p>We will explore two methods for loading data:</p>
@@ -807,7 +862,7 @@ hljs.initHighlightingOnLoad();
 <li>Excel files</li>
 <li>Google docs</li>
 </ul></li>
-<li>Via the web using the <code>rvest</code> package</li>
+<li>Via the web using the <a href="http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/"><code>rvest</code></a> package in RStudio package</li>
 </ul>
 
 </div>
@@ -842,7 +897,7 @@ format:</p>
 <section data-transition="linear" data-transition-speed="default">
 <h3>Excel Files</h3>
 <div class="slideContent" >
-<p>We convert to CSV format to eliminate the metadata:</p>
+<p>We convert the <code>UCBAdmissions.xlsx</code> file to CSV format to eliminate the metadata:</p>
 
 <ol>
 <li>From Excel&#39;s menu bar -&gt; <em>File</em> -&gt; <em>Save As&hellip;</em> -&gt; <em>Format</em> -&gt; <em>Windows Comma Separated (.csv)</em></li>
@@ -885,27 +940,17 @@ format:</p>
 <section data-transition="linear" data-transition-speed="default">
 <h3>Basic Webscraping</h3>
 <div class="slideContent" >
-<p>The other way we&#39;ll load is by basic <strong>web-scraping</strong> via the <code>rvest</code> package.  Click to the following 
-<a href="http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/" target="_blank">article</a> on financial aid for univerisities at the Washington Post.</p>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Basic Webscraping</h3>
-<div class="slideContent" >
-<p>Run the following code:</p>
+<p>The other way we&#39;ll load is by basic <strong>web-scraping</strong> via the <a href="http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/"><code>rvest</code></a> package in RStudio package. Run the following code in RStudio:</p>
 
 <pre><code class="r">library(rvest)
-webpage &lt;- read_html(&quot;http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/&quot;)
-wp_data &lt;- webpage %&gt;% 
+webpage &lt;- &quot;http://apps.washingtonpost.com/g/page/local/college-grants-for-the-affluent/1526/&quot;
+wp_data &lt;- webpage %&gt;%
+  read_html() %&gt;% 
   html_nodes(&quot;table&quot;) %&gt;% 
   .[[1]] %&gt;% 
   html_table()
 View(wp_data)
 </code></pre>
-
-<p>Don&#39;t worry about understanding the mechanics for now, just load it.</p>
 
 </div>
 
@@ -921,35 +966,6 @@ View(wp_data)
 </ul>
 
 <p>The <code>html_nodes()</code> function looks for HTML tags.</p>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>HW 0</h3>
-<div class="slideContent" >
-<p>R Markdown</p>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Data Files</h3>
-<div class="slideContent" >
-<p>CSV. No fluff, just the important stuff.</p>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Berkeley Admissions Data</h3>
-<div class="slideContent" >
-<pre><code class="r"># Write UC Berkeley data to CSV.
-library(readr)
-data(&quot;UCBAdmissions&quot;)
-UCBAdmissions &lt;- UCBAdmissions %&gt;% as.data.frame()
-write_csv(UCBAdmissions, path = &quot;./Lec02 More dplyr/UCBAdmissions.csv&quot;)
-</code></pre>
 
 </div>
 
