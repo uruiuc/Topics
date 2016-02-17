@@ -11,6 +11,7 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
             1. Click on `Lec02.R` -> Raw
             1. From your browser's menu bar -> File -> Save Page As... Be sure to save as `Lec02.R` and not `Lec02.R.txt`
         * `UCBAdmissions.xlsx` Excel spreadsheet. To download repeat steps a. and b. above.
+    + <a href="https://github.com/Middlebury-Data-Science/HW-0" target="_blank">HW-0</a>, due Wednesday 2016/2/24, is posted. This is merely a practice homework to familiarize yourselves to the HW submission format and process.
 * **Lec01: Data manipulation with `dplyr`**
     + <a href="http://rpubs.com/rudeboybert/MATH216_Lec01" target="_blank">Slides</a>: Tidy data, data manipulation verbs, piping `%>%` with the `magrittr` package.
     + Files: `Lec01.R` Exercise
