@@ -4,8 +4,8 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
 
 
 * **Lec02: More `dplyr`**
-    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec02" target="_blank">Slides</a>: 
-    + Files: The importance of minimizing prerequisites to research, loading data into RStudio via CSV files or webscraping.
+    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec02" target="_blank">Slides</a>: The importance of minimizing prerequisites to research, loading data into RStudio via CSV files or webscraping.
+    + Files:
         * `Lec02.R` Exercise. To download:
             1. Go to the above directory "Lec02 Loading Data"
             1. Click on `Lec02.R` -> Raw
