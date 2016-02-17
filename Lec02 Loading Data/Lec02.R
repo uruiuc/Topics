@@ -15,13 +15,12 @@ mtcars
 # variable is a flaw in the dataset as originally loaded.
 mtcars <- mtcars %>% 
   add_rownames() %>% 
-  rename("make_model"=rowname)
+  rename("make_model" = rowname)
 
 
 # Using the help file and the commands above, do the following:
 # -Identify the cars with 4 forward gears in decreasing order of horse power.
 # Don't show all variables, but car make and model name and the horse power.
-
 mtcars %>% 
   filter(gear==4) %>% 
   arrange(desc(hp)) %>% 
@@ -107,7 +106,7 @@ currency_to_numeric <- function(x){
 }
 currency_to_numeric("$19,999")
 
-# mutate the data set to change all curr
+# mutate the data set to change all currency values.
 wp_data <- wp_data %>% 
   mutate(
     comp_fee = currency_to_numeric(comp_fee),
@@ -117,151 +116,97 @@ wp_data
 
 
 
-# Using the ifelse() command, replace missing values with .5
-# p_no_need_grant = ifelse(is.na(p_no_need_grant), .5, p_no_need_grant))
-
-
-
 #------------------------------------------------------------------------------
 # Step 1: Creating a new variable
 #------------------------------------------------------------------------------
+# Now let's say we want to identify which schools are in the northeast i.e. 
+# create a categorical variable NE with levels: NE and non-NE.
+# We define the list of NE states
+NE_states <- c("CT", "DC", "DE", "MA", "MD", "ME", "NH", "NJ", "NY", "PA", "RI", "VT")
 
+# A very handy function is the ifelse() function. Take a look at the help file
+# for it. Ex:
+ifelse(c(TRUE, TRUE, FALSE, TRUE, FALSE), "apple", "orange")
 
+# Also recall the %in% function
+c("TX", "VT", "NY", "WA") %in% NE_states
 
-
-
-
-#------------------------------------------------------------------------------
-# STEP 1: CREATING NEW VARIABLES
-#------------------------------------------------------------------------------
-# Create a region (south) variable:
-table(wp_data$state)
-state.list <- c('AL', 'AR', 'FL', 'GA', 'KY', 'LA', 'NC', 'SC', 'TN', 'TX')
-
+# We combine these two functions to mutate the desired variable
 wp_data <- wp_data %>%
-  mutate(south = ifelse(state %in% state.list, 'south', 'non-south'))
-
-# EXERCISE: create a region (NE) variable by changing the above code to create a
-# binary variable that identifies the following states
-state.list <- c('CT', 'DC', 'DE', 'MA', 'MD', 'ME', 'NH', 'NJ', 'NY', 'PA', 'RI', 'VT')
+  mutate(NE = ifelse(state %in% NE_states, 'NE', 'non-NE'))
+wp_data
 
 
 
 #------------------------------------------------------------------------------
-# STEP 2: ARRANGE and SELECT DATA
+# Step 2: arrange() and select()
 #------------------------------------------------------------------------------
-# Arranging/sorting the data by region (south)
-# First let's sort the data by the south region variable
+# Arranging/sorting the data by region (NE)
+# First let's sort the data by the NE region variable
 wp_data <- wp_data %>%
-  arrange(south)
+  arrange(NE)
+wp_data
 
 # The default for arrange is ascending, let's put that in descending order instead
 wp_data <- wp_data %>%
-  arrange(desc(south))
+  arrange(desc(NE))
+wp_data
 
 # It might be more useful to sort the data by multiple variables
 wp_data <- wp_data %>%
-  arrange(desc(south), ave_no_need_grant)
+  arrange(desc(NE), ave_no_need_grant)
+wp_data
 
-# We can also create a NEW data frame with just these variables while executing this code
-south.data <-
-  wp_data %>%
-  arrange(desc(south), ave_no_need_grant) %>%
-  select(south, ave_no_need_grant)
-
-# Let's take a look.  What's missing?
-View(south.data)
+# We can also create a NEW data frame with just these variables while executing this code.
+# What important information is missing?
+wp_data %>%
+  arrange(desc(NE), ave_no_need_grant) %>%
+  select(NE, ave_no_need_grant)
 
 # Oops we forgot to include school name and sector
-south.data <-
-  wp_data %>%
-  arrange(desc(south), ave_no_need_grant) %>%
-  select(school, sector, south, ave_no_need_grant)
-
-# EXERCISE: Create a similarly ordered data frame for the north_east
+wp_data %>%
+  arrange(desc(NE), ave_no_need_grant) %>%
+  select(school, sector, NE, ave_no_need_grant)
 
 
 
 #------------------------------------------------------------------------------
-# STEP 3: SUMMARIZE YOUR DATA
+# Step 3: summarise() and filter()
 #------------------------------------------------------------------------------
-# EXAMPLE: find the mean and standard deviation of each variable by region (south)
-south.data %>%
-  group_by(south) %>%
+# Find the mean and standard deviation of each variable by region (NE)
+wp_data %>%
+  group_by(NE) %>%
   summarise(mean_merit = mean(ave_no_need_grant))
 
-# summarise_each() is like summarise, but on all (numerical) columns
-south.data %>%
-  group_by(south) %>%
-  summarise_each(funs(mean(.), sd(.)))
-
-# Or you can specify columns
+# summarise_each() is like summarise(), allows you to apply
+# -multiple functions on
+# -multiple columns
 wp_data %>%
-  group_by(south) %>%
+  group_by(NE) %>%
   summarise_each(
-    funs(mean(.)),
-    p_no_need_grant,  ave_no_need_grant,	p_need_grant)
+    funs(mean(.), median(.)), 
+    p_no_need_grant,	p_need_grant)
 
-wp_data %>%
-  group_by(south) %>%
+# Why the NA's? This how R treats missing data. Let's see which schools have
+# missing values for p_no_need_grant is the is.na() function
+wp_data %>% 
+  filter(is.na(p_no_need_grant))
+
+# One way to deal with missing data is to simply eliminate rows that have them.
+# DANGER: this may have implications for your analysis, especially if there is
+# a systematic reason these values are missing? Maybe these schools have a very
+# particular financial aid system, and don't want to share this info. Always 
+# think carefully before sweeping missing values under the rug, and be sure
+# to acknowledge this in your reports.
+
+# We repeat the above, but removing rows with missing values by setting
+# !is.na().  The ! means "not".  i.e. not missing
+wp_data %>% 
+  filter(!is.na(p_no_need_grant)) %>%
+  group_by(NE) %>%
   summarise_each(
-    funs(mean(.), sd(.)),
-    p_no_need_grant,  ave_no_need_grant)
-
-# EXERCISE: Do the same for NE schools
-
-
-
-
-#------------------------------------------------------------------------------
-# STEP 4: VISUALIZE YOUR DATA (HISTORGRAMS)
-#------------------------------------------------------------------------------
-ggplot(south.data, aes(x=ave_no_need_grant)) +
-  geom_histogram()
-
-ggplot(south.data, aes(x=ave_no_need_grant)) +
-  geom_histogram() +
-  theme_classic()
-
-ggplot(south.data, aes(x=ave_no_need_grant)) +
-  geom_histogram() +
-  theme_classic() +
-  facet_wrap( ~  south, ncol=2)
-
-ggplot(south.data, aes(x=ave_no_need_grant, fill=as.factor(south))) +
-  geom_histogram() +
-  theme_classic() +
-  facet_wrap( ~  south, ncol=2)
-
-# The difference between facet_wrap() and facet_grid() is that you can
-# cross-classify on two variables like below where the sector categorical
-# variable are the columns and the south variable is are the rows
-ggplot(south.data, aes(x=ave_no_need_grant, fill=as.factor(south))) +
-  geom_histogram() +
-  theme_classic() +
-  facet_grid(south ~  sector)
-
-ggplot(south.data, aes(x=ave_no_need_grant, fill=as.factor(south))) +
-  geom_histogram(aes(y = ..density..)) +
-  theme_classic() +
-  facet_grid(south ~  sector)
-
-
-
-#------------------------------------------------------------------------------
-# EXERCISE:  Answer question from lecture
-#------------------------------------------------------------------------------
-# I want to know which states have the highest average no need grants (averaged
-# over schools).
-# 1. Create the smallest data frame (i.e. least number of rows, least number of
-# columns) that answers this question.
-# 2. Challenge: create a visualization of this data
-
-
-
-
-
-
+    funs(mean(.), median(.)), 
+    p_no_need_grant,	p_need_grant)
 
 
 
@@ -269,3 +214,15 @@ ggplot(south.data, aes(x=ave_no_need_grant, fill=as.factor(south))) +
 #------------------------------------------------------------------------------
 # Exercise02
 #------------------------------------------------------------------------------
+# 1. I want to know which states have the highest average no need grants (averaged
+# over schools). Create the smallest data frame (i.e. least number of rows, least number of
+# columns) that answers this question.
+
+# 2. For southern states, repeat the above exercises without looking at the above code:
+# -Display a list of southern schools, their sector, and the average no need grant,
+# sorted in increasing order of the average no need grant.
+# -Compute the mean and median 
+#   + Percent of freshmen receiving no-need grants from school
+#   + Percent receiving need-based grants from school
+# for both southern and non-southern schools
+south_states <- c('AL', 'AR', 'FL', 'GA', 'KY', 'LA', 'NC', 'SC', 'TN', 'TX')
