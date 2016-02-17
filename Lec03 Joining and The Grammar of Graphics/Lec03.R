@@ -136,7 +136,7 @@ bind_rows(x, x) %>% dplyr::distinct()
 # -Or do things manually: first set R's working directory to match where the file is:
 #  Files panel -> Navigate to Directory -> More -> "Set As Working Directory"
 #
-# In my case, it is:
+# In my case, it's the follwing.
 states <- read.csv("~/Documents/Teaching/MATH216/Topics/Lec03 Joining and The Grammar of Graphics/states.csv", header=TRUE) %>% 
   tbl_df()
 states

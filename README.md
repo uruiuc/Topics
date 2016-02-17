@@ -2,11 +2,11 @@
 
 The course syllabus (and setup instructions) can be found [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
-* **Lec03: Joins**
-    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec03" target="_blank">Slides</a>: 
+* **Lec03: `dplyr` Joins**
+    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec03" target="_blank">Slides</a>: `dplyr` joins for merging data frames and discussion on [The Grammar of Graphics paper](http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf).
     + Files:
         * `Lec03.R` Exercise.
-        * `states.csv`
+        * `states.csv`. Click on `Raw` button, then Save Page As `states.csv` and not `states`.
 * **Lec02: Loading Data**
     + <a href="http://rpubs.com/rudeboybert/MATH216_Lec02" target="_blank">Slides</a>: The importance of minimizing prerequisites to research, loading data into RStudio via CSV files or webscraping.
     + Files:
