@@ -9,6 +9,9 @@ library(dplyr)
 library(ggplot2)
 library(rvest)
 
+
+
+
 #------------------------------------------------------------------------------
 # Solutions to Exercises from Lec02.R
 #------------------------------------------------------------------------------
@@ -113,23 +116,26 @@ semi_join(x, y, by="x1")
 full_join(x, y, by="x1")
 anti_join(x, y, by="x1")
 
-# Other useful set operations, also included on your cheat sheet.
-# Note that we prefaced the distinct() command with dplyr::, indicating that
-# this command is from the dplyr package. While not necessary in this case, it 
-# can be useful when
-# -you might have two packages loaded that share function names and you need to
-#  specify which one to use
-# -to quickly inform other users which package a particular command comes from.
+# Other useful set operations (included on your cheat sheet).
 intersect(x, z)
 union(x, z)
 setdiff(x, z)
 bind_rows(x, y)
 bind_rows(x, x) %>% dplyr::distinct()
 
+# Note that we prefaced the distinct() command with dplyr::, indicating that
+# this command is from the dplyr package. While not necessary in this case, it 
+# can be useful when
+# -you might have two packages loaded that share function names and you need to
+#  specify which one to use
+# -to quickly inform other users which package a particular command comes from.
+
+
+
 
 
 #------------------------------------------------------------------------------
-# Improving the previous plot
+# Back to Washington Post Data
 #------------------------------------------------------------------------------
 # We import the states.csv file into R. You can either
 # -Use Environment Panel -> Import Dataset
@@ -137,10 +143,12 @@ bind_rows(x, x) %>% dplyr::distinct()
 #  Files panel -> Navigate to Directory -> More -> "Set As Working Directory"
 #
 # In my case, it's the follwing.
-states <- read.csv("~/Documents/Teaching/MATH216/Topics/Lec03 Joining and The Grammar of Graphics/states.csv", header=TRUE) %>% 
-  tbl_df()
-states
+
 
 # EXERCISE:
 # 1. Merge the states names and abbrevation data with the new states data so that we know
 # what region each observation (i.e. university) is in
+
+
+
+
