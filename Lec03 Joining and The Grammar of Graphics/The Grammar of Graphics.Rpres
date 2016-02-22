@@ -47,7 +47,10 @@ temperature | **`x, y`** | **`line`**
 
 Example from Paper
 ========================================================
-```{r}
+
+Load this in R:
+
+```{r, eval=FALSE}
 simple <- 
   data.frame(
     A = c(2,1,4,9),
@@ -61,8 +64,15 @@ simple <-
 
 Example from Paper
 ========================================================
-```{r}
+
+Run each of these individually:
+
+```{r, eval=FALSE}
 ggplot(data=simple, aes(x=A, y=B)) + geom_point()
+
+ggplot(data=simple, aes(x=A, y=B, color=D)) + geom_point()
+
+ggplot(data=simple, aes(x=A, y=B, shape=D)) + geom_point()
 ```
 
 

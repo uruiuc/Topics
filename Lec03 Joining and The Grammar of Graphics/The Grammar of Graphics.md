@@ -45,6 +45,9 @@ temperature | **`x, y`** | **`line`**
 Example from Paper
 ========================================================
 
+Load this in R:
+
+
 ```r
 simple <- 
   data.frame(
@@ -60,11 +63,16 @@ simple <-
 Example from Paper
 ========================================================
 
+Run each of these individually:
+
+
 ```r
 ggplot(data=simple, aes(x=A, y=B)) + geom_point()
-```
 
-![plot of chunk unnamed-chunk-3](The Grammar of Graphics-figure/unnamed-chunk-3-1.png) 
+ggplot(data=simple, aes(x=A, y=B, color=D)) + geom_point()
+
+ggplot(data=simple, aes(x=A, y=B, shape=D)) + geom_point()
+```
 
 
 
