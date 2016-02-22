@@ -79,7 +79,7 @@ inner_join(x, y, by = "x1")
 The "join by" variable
 ========================================================
 
-If the "join by"" variable has different names in the data frames.  Ex:
+If the "join by" variable has different names in the data frames.  Ex:
 
 * name `a` in data frame `x`
 * name `b` in data frame `y`

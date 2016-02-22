@@ -64,7 +64,7 @@ Example from Paper
 ggplot(data=simple, aes(x=A, y=B)) + geom_point()
 ```
 
-![plot of chunk unnamed-chunk-3](The Grammar of Graphics-figure/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-3](The Grammar of Graphics-figure/unnamed-chunk-3-1.png) 
 
 
 
