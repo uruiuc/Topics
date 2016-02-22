@@ -145,6 +145,7 @@ bind_rows(x, x) %>% dplyr::distinct()
 # In my case, it's the follwing.
 
 
+
 # EXERCISE:
 # 1. Merge the states names and abbrevation data with the new states data so that we know
 # what region each observation (i.e. university) is in

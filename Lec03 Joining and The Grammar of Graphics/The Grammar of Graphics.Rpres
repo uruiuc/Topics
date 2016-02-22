@@ -12,9 +12,7 @@ library(ggplot2)
 What is a statistical graphic?
 ========================================================
 
-At its simplest:
-
-A statistical graphic is a mapping of variables in a
+At its simplest: A statistical graphic is a mapping of variables in a
 
 * **`data`** set to 
 * **`aes()`**thetic attributies of 
@@ -57,9 +55,14 @@ simple <-
     C = c(4,1,15,80),
     D = c("a", "a", "b", "b")
   )
+```
 
+
+
+Example from Paper
+========================================================
+```{r}
 ggplot(data=simple, aes(x=A, y=B)) + geom_point()
-ggplot(data=simple, aes(x=A, y=B)) + geom_point() + 
 ```
 
 
@@ -84,9 +87,9 @@ Note the key words: **iterative**, **framework**, and **customized**.
 Limitations
 ========================================================
 
-* Steep learning curve, just like learning a new language that has different grammar (Korean vs romance languages, Korean vs Chinese, etc.)
-* It teaches you grammar, but it doesn't teach you how to write poetry. i.e. it sets up
-a framework for making graphics, but it doesn't teach you how to make **good graphics**. Example from paper: "Alabama First!"
+* Steep learning curve, just like learning a new grammar
+* It teaches you grammar, but not how to write poetry. i.e. it sets up
+a framework for making graphics, but it doesn't teach you how to make **good graphics**.
 * "Beyond that, it seems difficult to see how to do much more algorithmically, and we need to turn to education and training."
 * "all plots are static and separate." i.e. **non-interactive**.
 
@@ -98,7 +101,8 @@ Limitations
 Packages for interactive graphics include
   + `ggvis`: in development by Wickham
   + `plotly`: from the creators of [http://www.plot.ly](http://www.plot.ly)
-  + `shiny`: later in the course. Install the `shiny` package -> File -> New 
+  + `shiny`: later in the course. Install the `shiny` package -> File -> New
+  File -> Shiny Web App... -> Single File -> Click on "Rup App"
 
 and many, many more...
 
