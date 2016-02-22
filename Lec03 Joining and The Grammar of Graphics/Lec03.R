@@ -12,6 +12,7 @@ library(rvest)
 
 
 
+
 #------------------------------------------------------------------------------
 # Solutions to Exercises from Lec02.R
 #------------------------------------------------------------------------------
@@ -135,21 +136,14 @@ bind_rows(x, x) %>% dplyr::distinct()
 
 
 #------------------------------------------------------------------------------
-# Back to Washington Post Data
+# EXERCISE: Back to Washington Post Data
 #------------------------------------------------------------------------------
-# We import the states.csv file into R. You can either
-# -Use Environment Panel -> Import Dataset
-# -Or do things manually: first set R's working directory to match where the file is:
-#  Files panel -> Navigate to Directory -> More -> "Set As Working Directory"
+# Import the states.csv file and look at its contents.  
 #
-# In my case, it's the follwing.
-
-
-
-# EXERCISE:
-# 1. Merge the states names and abbrevation data with the new states data so that we know
-# what region each observation (i.e. university) is in
-
-
-
+# Merge it with the Washington Post data to answer the following questions:
+#
+# -Which region (south, NE, west, or midwest) has the highest proportion of its
+#  colleges being private
+# -For each region, compute the values necessary to draw a whisker-less boxplot
+#  of the annual tuition fees.
 
