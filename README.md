@@ -10,7 +10,8 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
             * `states.csv`. Click on `Raw` button, then Save Page As `states.csv` and not `states`.
     + **Grammr of Graphics**
         + <a href="http://rpubs.com/rudeboybert/MATH216_Lec03b" target="_blank">Slides</a>: Discussion on [The Grammar of Graphics paper](http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf).
-        + Example of Shiny app (interactive visualization). 
+        + Files:
+            * `babynames.Rmd`. Example of Shiny app (interactive visualization); install `shiny` and listed packages first.
 * **Lec02: Loading Data**
     + <a href="http://rpubs.com/rudeboybert/MATH216_Lec02" target="_blank">Slides</a>: The importance of minimizing prerequisites to research, loading data into RStudio via CSV files or webscraping.
     + Files:
