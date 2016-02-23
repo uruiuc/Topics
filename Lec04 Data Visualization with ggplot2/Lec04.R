@@ -2,20 +2,25 @@
 library(dplyr)
 library(ggplot2)
 library(rvest)
-library(nmle)
 
 #------------------------------------------------------------------------------
 # Solutions to Exercises from Lec03.R
 #------------------------------------------------------------------------------
+# Before going over the solutions, do the following:
+#
+# -Re-run lines 20-51 from Lec03.R to load the wp_data
+# -Load the states.csv file from Lec03
+
+# -Which region (south, NE, west, or midwest) has the highest proportion of its
+#  colleges being private
 
 
 
+# -For each region, compute the values necessary to draw a whisker-less boxplot
+#  of the annual tuition fees.
 
-# Install the ggplot package
-install.packages("ggplot2")
 
-# Load the package
-library(ggplot2)
+
 
 # We will consider the diamonds data set
 data(diamonds)
@@ -201,8 +206,6 @@ p + geom_tile() + ggtitle("geom_tile")
 # Polygon with vertices defined at coordinates
 p + geom_polygon(color="red", size=4, fill="green") + ggtitle("geom_polygon")
 
-
-
 # For the diamond dataset, let's look at a histogram of carat.
 ggplot(data=diamonds, aes(x=carat)) + geom_histogram()
 
@@ -255,6 +258,11 @@ titanic.plot + geom_bar(stat = "identity", position="fill")
 titanic.plot + geom_bar(stat = "identity", position="fill") + coord_flip()
 
 # Question:  What can you say about the captain's "policy"?
+
+
+
+
+
 
 
 
@@ -318,23 +326,6 @@ ggplot(ex2, aes(x=name, y=count)) + geom_bar(stat="identity")
 
 
 #------------------------------------------------------------------------------
-# Quick Plots
-#------------------------------------------------------------------------------
-data(mtcars)
-# Only specifying x aesthetic defaults to a histogram
-qplot(x=wt, data=mtcars)
-
-# Specifying both x and y aesthetics defaults to a scatterplot
-qplot(x=disp, y=mpg, data=mtcars)
-
-# Change to boxplot
-qplot(x=1, y=wt, geom="boxplot", data=mtcars)
-qplot(x=as.factor(cyl), y=wt, geom="boxplot", data=mtcars)
-qplot(x=as.factor(cyl), y=wt, geom="boxplot", data=mtcars) + coord_flip()
-
-
-
-#------------------------------------------------------------------------------
 # Wrapping Up UC Berkeley Admissions
 #------------------------------------------------------------------------------
 # Load and "tidy" data
@@ -367,17 +358,15 @@ ggplot(UCB, aes(x=Dept, y=Freq, fill = Admit)) +
 
 
 
-
-
-
-
-
 #------------------------------------------------------------------------------
-# Exercise:
+# Exercises:
 #------------------------------------------------------------------------------
 
-# 1. Merge the states names and abbrevation data with the new states data so that we know
-# what region each observation (i.e. university) is in
+# 1. Construct a statistical graphic showing how male vs female acceptance
+# varied by department.  Bonus:  Using google, make one of the axes reflect
+# percentage of applicants.
+# 2. Construct a statistical graphic showing the "competitiveness" of the
+# department as measured by acceptance rate.
 
 
 
