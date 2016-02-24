@@ -122,12 +122,17 @@ p <- p + ggtitle("First example")
 p
 
 
-# Exercise:  Create a plot that shows once again the relationship between carat,
+
+
+
+#------------------------------------------------------------------------------
+# EXERCISE
+#------------------------------------------------------------------------------
+# Q1.  Create a plot that shows once again the relationship between carat,
 # but now let the size of the points reflect the table of the diamond and have
 # separate plots by clarity
 
-
-# Exercise:  A friend wants to know if cars in 1973-1974 that have bigger
+# Q2. A friend wants to know if cars in 1973-1974 that have bigger
 # cylinders (the variable displacement in cu. in.) have better mileage (in mpg).
 # Two important factors they want to consider are the # of cylinders and whether
 # the car has an automatic or manual transmission.  Answer your friend's
