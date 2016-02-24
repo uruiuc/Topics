@@ -2,6 +2,9 @@
 
 The course syllabus (and setup instructions) can be found [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
+* **Lec04**
+    + **`ggplot2` Package**
+        + <a href="http://rpubs.com/rudeboybert/MATH216_Lec04" target="_blank">Slides</a>: Components of a graphic and other ressources.
 * **Lec03**
     + **`dplyr` Joins**
         + <a href="http://rpubs.com/rudeboybert/MATH216_Lec03a" target="_blank">Slides</a>: `dplyr` joins for merging data frames.
