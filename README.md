@@ -2,21 +2,38 @@
 
 The course syllabus (and setup instructions) can be found [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
-* **Lec04**
-    + **`ggplot2` Package**
-        + <a href="http://rpubs.com/rudeboybert/MATH216_Lec04" target="_blank">Slides</a>: Components of a graphic and other ressources.
-        + Files:
-            * `Lec04.R` Exercise.
-* **Lec03**
+
+### Week 3: 2/29 - 3/4
+
+* **Lec05: More `ggplot2`**
+    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec05" target="_blank">Slides</a>: 
+    + Files: `Lec05.R` Exercise.
+
+
+
+
+
+### Week 2: 2/22 - 2/26
+
+* **Lec04: `ggplot2` Package**
+    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec04" target="_blank">Slides</a>: More components of a statistical graphic and other ressources.
+    + Files: `Lec04.R` Exercise.
+* **Lec03:**
     + **`dplyr` Joins**
         + <a href="http://rpubs.com/rudeboybert/MATH216_Lec03a" target="_blank">Slides</a>: `dplyr` joins for merging data frames.
         + Files:
             * `Lec03.R` Exercise.
             * `states.csv`. Click on `Raw` button, then Save Page As `states.csv` and not `states`.
-    + **Grammr of Graphics**
+    + **Grammar of Graphics**
         + <a href="http://rpubs.com/rudeboybert/MATH216_Lec03b" target="_blank">Slides</a>: Discussion on [The Grammar of Graphics paper](http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf).
-        + Files:
-            * `babynames.Rmd`. Example of Shiny app (interactive visualization); install `shiny` and listed packages first.
+        + Files: `babynames.Rmd`. Example of Shiny app (interactive visualization); install `shiny` and listed packages first.
+            
+
+
+            
+            
+### Week 1: 2/15 - 2/19
+
 * **Lec02: Loading Data**
     + <a href="http://rpubs.com/rudeboybert/MATH216_Lec02" target="_blank">Slides</a>: The importance of minimizing prerequisites to research, loading data into RStudio via CSV files or webscraping.
     + Files:
