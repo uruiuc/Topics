@@ -1,0 +1,132 @@
+The Grammar of Graphics
+========================================================
+author: Albert Y. Kim
+date: Wednesday 2016/2/24
+
+```{r, echo=FALSE}
+library(dplyr)
+library(ggplot2)
+```
+
+
+
+What is a statistical graphic?
+========================================================
+
+Recall: A statistical graphic is a mapping of variables in a
+
+* **`data`** set to 
+* **`aes()`**thetic attributies of 
+* **`geom_`**etric objects.
+
+All pages/chapters refer to the "A Layered Grammar of Graphics" paper.
+
+
+
+Other Components of a Statistical Graphic
+========================================================
+
+More components (page 8). From hardest conceptually to easiest:
+
+* **`scales`** what axes and legends
+* **`stat`** statistical transformations of the data (p.11)
+* **`position`** minor tweeks to the position of elements
+* **`facet`** how to break up data into subsets and display broken down plots
+* **`coord`** coordinate system: cartesian, polar, etc.
+* **Extras** titles, axes labels, themes
+
+
+
+Hard Aspect of ggplot
+========================================================
+
+Understanding the defaults (hence Chapter 4 in the paper).  In particular
+
+* Each `geom_` has a defined set of aesthetics.  Ex: Look at `geom_bar` on cheatsheet.
+* Each `geom_` has a default `stat`. Ex: `geom_bar`'s default `stat` is `count`. If you want to use a different `stat`, like
+`identity`, you have to set `stat=identity`.
+
+
+
+Further Reading Ressources
+========================================================
+* Help files.  Ex `?geom_line()`
+* Online help files: [http://docs.ggplot2.org/current/](http://docs.ggplot2.org/current/)
+* `ggplot2` book is under Non-Public, code from book is at
+[http://ggplot2.org/book/](http://ggplot2.org/book/). If you want to read it
+(optional), read
+    + Chapter 1,
+    + Chapter 3, but it will be hard to grasp the first time
+    + Chapter 4
+    + Revisit Chapter 3. Chapters 5-10 go into specific details.
+
+
+
+Examples for Today
+========================================================
+In `ggplot_2.R` we have examples of
+
+* setting groups: Examples of groups.
+* many different types of geoms: `Examples of geoms`.
+* `geom_histogram()` and **position adjustments**: [Titanic Survival Data](https://www.youtube.com/watch?v=zisjRgcuL9k)
+
+
+
+Today: UC Berkeley Admissions
+========================================================
+
+In 1973, the UC Berkeley was sued for bias against women who had applied for admission to graduate schools.  n=4526 applicants:
+
+```{r, echo=FALSE}
+data(UCBAdmissions)
+UCBAdmissions <- as.data.frame(UCBAdmissions) %>% group_by(Admit, Gender) %>% summarise(Freq = sum(Freq))
+UCBAdmissions
+```
+
+
+
+Today: UC Berkeley Admissions
+========================================================
+
+```{r, echo=FALSE}
+UCBPlot <- ggplot(data=UCBAdmissions, aes(x=Gender, y=Freq, fill=Admit)) +
+  ggtitle("Acceptance Rate Split by Gender") +
+  xlab("Gender")
+UCBPlot + geom_bar(stat = "identity") +
+  ylab("# of Applicants")
+```
+
+
+
+Today: UC Berkeley Admissions
+========================================================
+
+```{r, echo=FALSE}
+UCBPlot + geom_bar(stat = "identity", position="fill") +
+  ylab("Prop of Applicants")
+```
+
+
+
+Today: UC Berkeley Admissions
+========================================================
+
+However, there was another variable researchers could consider: department applied to.
+
+```{r, echo=FALSE}
+data(UCBAdmissions)
+UCBAdmissions <- as.data.frame(UCBAdmissions) %>% tbl_df()
+UCBAdmissions
+```
+
+
+
+Today: UC Berkeley Admissions
+========================================================
+
+Investigate:
+
+1. Construct a statistical graphic showing how male vs female acceptance varied by department.  Bonus:  Using google, make one of the axes reflect percentage of applicants.
+2. Construct a statistical graphic showing the "competitiveness" of the department as measured by acceptance rate.
+
+
