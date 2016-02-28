@@ -1,6 +1,8 @@
 # Load packages
 library(dplyr)
 library(ggplot2)
+
+# Install this package for Oxboys dataset.
 library(nlme)
 
 
@@ -33,10 +35,12 @@ diamonds <- diamonds[samp, ]
 data(diamonds)
 diamonds <- sample_n(diamonds, size = 500)
 
-# We add the aesthetic size to be mapped from the variable table AND we facet
-# plot them by clarity. This way we can compare the relationship between carat
-# and price, for different tables, AND split by different clarity.
-# facets are a VERY powerful tool.
+# We
+# - add the aesthetic size to be mapped from the variable "table
+# - we facet plot them by clarity. 
+# This way we can compare the relationship between carat and price, for
+# different tables, AND split by different clarity.
+# acets are a VERY powerful tool.
 ggplot(data=diamonds, aes(x = carat, y = price, colour = cut, size = table)) +
   geom_point() +
   facet_wrap(~clarity, nrow=2) +
@@ -53,240 +57,186 @@ ggplot(data=diamonds, aes(x = carat, y = price, colour = cut, size = table)) +
 data(mtcars)
 table(mtcars$cyl)
 
+# There are many ways to do this: 
+
 # Here the variable cyl is treated as a continuous varible, so we get a
 # continous color gradient
 ggplot(data=mtcars, aes(x=disp, y=mpg, color=cyl)) +
   geom_point() +
-  facet_wrap(~am)
+  facet_wrap(~am) +
+  xlab("Cylinder size (displacement in cubic inches)") +
+  ylab("MPG")
 
 # Here we convert the variable cyl to a categorical variable, with three
-# levels/labels: 4, 6, and 8.  Furthermore, we set the size of the points to be
-# 4.
+# levels: 4, 6, and 8.
 ggplot(data=mtcars, aes(x=disp, y=mpg, color=as.factor(cyl))) +
   geom_point() +
-  facet_wrap(~am)
+  facet_wrap(~am) +
+  xlab("Cylinder size (displacement in cubic inches)") +
+  ylab("MPG")
+
+# So it appears that as cars have bigger cylinders, they have worse mileage,
+# for both automatic and manual transmissions, and while taking into account
+# the number of cylinders. Note, this plot still needs polish b/c some of the
+# text is still non-informative.
 
 
 
 
 
 #------------------------------------------------------------------------------
-# Examples of groups
+# geom_histogram() and the group aesthetic
 #------------------------------------------------------------------------------
-# The following are the same. i.e. the default group aesthetic is "1":  all same
-# group
-ggplot(Oxboys, aes(age, height)) + geom_line()
-ggplot(Oxboys, aes(age, height, group=1)) + geom_line()
-
-# Set base plot
-p <- ggplot(Oxboys, aes(age, height, group = Subject)) + geom_line()
-p
-
-# Add regression lines (but not SE bars)
-p + geom_smooth(aes(group = Subject), method="lm", se = FALSE)
-p + geom_smooth(aes(group = 1), method="lm", se = FALSE)
-
-
-
-
-
-#------------------------------------------------------------------------------
-# Examples of geoms
-#------------------------------------------------------------------------------
-# We're going to work with the following data frame
-df <- data.frame(
-  x = c(3, 1, 5),
-  y = c(2, 4, 6),
-  label = c("a","b","c")
-)
-df
-
-# We set up the "base of the plot" in as general a fashion as possible
-p <- ggplot(data=df, aes(x, y, label = label)) + xlab(NULL) + ylab(NULL)
-
-# Points
-p + geom_point(size=5, color="darkorange") + ggtitle("geom_point")
-
-# Bars.  Here we need to set the "statistical transformation" to "identity", b/c
-# the default for geom_bar is "bin"
-p + geom_bar(stat="identity") + ggtitle("geom_bar(stat=\"identity\")")
-
-# Line, ordered by x value
-p + geom_line(size=4) + ggtitle("geom_line")
-
-# Area plot
-p + geom_area() + ggtitle("geom_area")
-
-# Line, in order of data
-p + geom_path() + ggtitle("geom_path")
-
-# Text
-p + geom_text(size = 10, angle=90) + ggtitle("geom_text")
-
-# Tiles centered at coordinates
-p + geom_tile() + ggtitle("geom_tile")
-
-# Polygon with vertices defined at coordinates
-p + geom_polygon(color="red", size=4, fill="green") + ggtitle("geom_polygon")
-
 # For the diamond dataset, let's look at a histogram of carat.
-ggplot(data=diamonds, aes(x=carat)) + geom_histogram()
+data(diamonds)
+ggplot(data=diamonds, aes(x=carat)) + 
+  geom_histogram()
 
-# If we don't specify the binwidth, then it gets set to the default 0.1
-ggplot(data=diamonds, aes(x=carat)) + geom_histogram(binwidth = 0.1)
+# We can change the # of bins or change the bin width
+ggplot(data=diamonds, aes(x=carat)) + 
+  geom_histogram(bins=50)
+ggplot(data=diamonds, aes(x=carat)) + 
+  geom_histogram(binwidth = 0.1)
+
 
 # The default aesthetic mapping carat to the y-axis is based on count.  Note,
 # since "count" is not a variable name in our dataset, we need to put ".."
 # around it.
 ggplot(data=diamonds, aes(x=carat)) +
-  geom_histogram(aes(y = ..count..), binwidth = 0.2)
+  geom_histogram(aes(y = ..count..))
 
-# Instead of count, we can have density, i.e. the height x width of each box
-# is the proportion
+# Instead of count, we can have density, so that the areas of the boxes sum to
+# 1 i.e. it is a probability distribution.
 ggplot(data=diamonds, aes(x=carat)) +
-  geom_histogram(aes(y = ..density..), binwidth = 0.2)
+  geom_histogram(aes(y = ..density..))
 
 
 
 
 
+#------------------------------------------------------------------------------
+# geom_line() and the group aesthetic
+#------------------------------------------------------------------------------
+data(Oxboys)
+
+# We consider the height of Oxford boys data set. We have 9 observations from 26
+# boys at different ages. Say we are interested in studying the growth of these
+# 26 boys over time.
+?Oxboys
+Oxboys <- Oxboys %>% tbl_df()
+Oxboys
+
+# For simplicity, let's consider Subject 1 only for now:
+subject_1 <- Oxboys %>% 
+  filter(Subject == 2)
+subject_1
+
+# We plot a geom_line(). Easy enough!
+p <- ggplot(subject_1, aes(x=age, y=height)) + 
+  geom_line()
+p
+
+# We can also add a regression line:
+p + stat_smooth(method="lm")
+p + stat_smooth(method="lm", se=FALSE, col="red") # without standard error bars
+
+# Now let's consider ALL boys, and not just Subject 1:
+ggplot(data=Oxboys, aes(x=age, y=height)) + 
+  geom_line()
+
+# This plot does not make much sense, as there is a single line for all 26 boys.
+# We resolve this by having separate lines for each by setting the group
+# aesthetic of the geom_line(). Much better:
+ggplot(data=Oxboys, aes(x=age, y=height, group = Subject)) + 
+  geom_line()
+
+# We could've equally done this using the color aesthetic, but there the large
+# number of subjects makes the legend a bit unwieldy. 
+ggplot(data=Oxboys, aes(x=age, y=height, col = Subject)) + 
+  geom_line()
+
+
+
+
+
+#------------------------------------------------------------------------------
+# geom_bar(), position adjusments, and which stat to use:
 #------------------------------------------------------------------------------
 # Titanic Survival Data
-#------------------------------------------------------------------------------
-# The original data is not in "tidy" format, so we tidy it.  Here tidying was
-# super easy.  Typically it won't be. Note, for each row, the observations
-# correspond to Class x Sex x Age X Survived categories (i.e. 32 rows), and not
-# individual people on the boat (in this case we would've had 2201 rows)
 data(Titanic)
 Titanic
+
+# The original data is not in "tidy" format, so we tidy it.  
+# Here tidying was super easy, but typically it won't be (more next Lecture)
 Titanic <- as.data.frame(Titanic)
 Titanic
 
-# Define base, title, and faceting
-titanic.plot <-
-  ggplot(data=Titanic, aes(x=Class, y=Freq, fill = Survived)) +
-  ggtitle("Titanic Survival Counts by Class x Gender x Age") +
-  facet_wrap(~ Age + Sex, nrow = 1)
+# KEY OBSERVATION:
+# Each row corresponds to
+# -a "binned" count for each of the 32 categories a passenger could be: 
+#  Class (4 levels) x Sex (2 levels) x Age (2 levels) X Survived (2 levels)
+# -and not individual people on the boat. If the rows corresponded to
+#  individuals, the data set would be 2201.
+# More on this later.
 
-# No layers just yet. We need to add a geom
-titanic.plot
+# Simple barplot: survival by Class:
+survival_by_class <- Titanic %>% 
+  group_by(Survived, Class) %>% 
+  summarize(Freq=sum(Freq))
+survival_by_class
 
-# Bar plots with different "position" adjustments. The default is "stack"
-titanic.plot + geom_bar(stat = "identity")
-titanic.plot + geom_bar(stat = "identity", position="stack")
-titanic.plot + geom_bar(stat = "identity", position="dodge")
-titanic.plot + geom_bar(stat = "identity", position="fill")
+# We want
+# -x aesthetic: separate bars by Class
+# -y aesthetic: to represent frequency
+# -fill aesthetic: the fill color of the bars to be split by Survived
+p <- ggplot(data=survival_by_class, aes(x=Class, y=Freq, fill = Survived))
 
-# Flip the coordinate system
-titanic.plot + geom_bar(stat = "identity", position="fill") + coord_flip()
+# Assign geom_bar to it:
+p + geom_bar()
 
-# Question:  What can you say about the captain's "policy"?
+# KEY POINT: This doesn't work b/c the default stat for geom_bar is "bin". i.e.
+# it takes multiple observatinons and assigns bins to them, like a histogram.
+# In our case, the data is already binned! So we need to override the default
+# stat to "stat=identity". i.e. f(x)=x i.e. take the data as they are!
+p + geom_bar(stat="identity")
 
+# We can also make position adjustments to the geom_bar. The default position
+# is "stack". Let's also look at two others:
+p + geom_bar(stat="identity", position="stack")
+p + geom_bar(stat="identity", position="dodge")
+p + geom_bar(stat="identity", position="fill")
 
-
-
-
-
-
-
-
-
-#------------------------------------------------------------------------------
-# UC Berkeley
-#------------------------------------------------------------------------------
-data(UCBAdmissions)
-UCBAdmissions
-
-# The original data is not in "tidy" format, so we tidy it.  Here tidying was
-# super easy.  Typically it won't be.
-UCB <- as.data.frame(UCBAdmissions)
-UCB
+# For fun, let's flip the coordinate-axes
+p + geom_bar(stat="identity", position="fill") + coord_flip()
 
 
-# Investigate!
-
-#------------------------------------------------------------------------------
-# UC Berkeley
-#------------------------------------------------------------------------------
-data(UCBAdmissions)
-UCBAdmissions
-
-# The original data is not in "tidy" format, so we tidy it.  Here tidying was
-# super easy.  Typically it won't be.
-UCB <- as.data.frame(UCBAdmissions)
-UCB
-
-
-library(scales)
-ggplot(UCB, aes(x=Gender, y=Freq, fill = Admit)) +
-  geom_bar(stat = "identity", position="fill") +
-  facet_wrap(~ Dept, nrow = 2) +
-  scale_y_continuous(labels = percent) +
-  ggtitle("Acceptance Rate Split by Gender & Department") +
-  xlab("Gender") +
-  ylab("% of Applicants")
-
-
-ggplot(UCB, aes(x=Dept, y=Freq, fill = Admit)) +
-  geom_bar(stat = "identity", position="fill") +
-  ggtitle("Acceptance Rate Split by Department") +
-  xlab("Dept") +
-  ylab("% of Applicants")
-
-
-#------------------------------------------------------------------------------
-# Question about stat("identity")
-#------------------------------------------------------------------------------
-ex <- data.frame(count=c(rep("A", 5), rep("B", 3)))
-ex
-ggplot(ex, aes(x=count)) + geom_bar()
-ggplot(ex, aes(x=count)) + geom_bar(stat="bin")
-ex2 <- data.frame(name=c("A", "B"), count=c(5, 3))
-ex2
-ggplot(ex2, aes(x=name, y=count)) + geom_bar()
-ggplot(ex2, aes(x=name, y=count)) + geom_bar(stat="identity")
-
-
-
-#------------------------------------------------------------------------------
-# Wrapping Up UC Berkeley Admissions
-#------------------------------------------------------------------------------
-# Load and "tidy" data
-data(UCBAdmissions)
-UCB <- as.data.frame(UCBAdmissions)
-
-# The scales package allows us to put %'ages on axes
-library(scales)
-ggplot(UCB, aes(x=Gender, y=Freq, fill = Admit)) +
-  geom_bar(stat = "identity", position="fill") +
-  facet_wrap(~ Dept, nrow = 2) +
-  scale_y_continuous(labels = percent) +
-  ggtitle("Acceptance Rate Split by Gender & Department") +
-  xlab("Gender") +
-  ylab("% of Applicants")
-
-ggplot(UCB, aes(x=Dept, y=Freq, fill = Admit)) +
-  geom_bar(stat = "identity", position="fill") +
-  ggtitle("Acceptance Rate Split by Department") +
-  xlab("Dept") +
-  ylab("% of Applicants")
-
-# Eye candy:  change up the color scheme by changing scale
-# See http://colorbrewer2.org/ for different palette names
-ggplot(UCB, aes(x=Dept, y=Freq, fill = Admit)) +
-  geom_bar(stat = "identity", position="fill") +
-  ggtitle("Acceptance Rate Split by Department") +
-  xlab("Dept") +
-  ylab("% of Applicants") + scale_fill_brewer(palette="Pastel1")
 
 
 
 #------------------------------------------------------------------------------
 # Exercises:
 #------------------------------------------------------------------------------
+# Q1: Modify the Titanic code above to show a visualization that can answer the
+# question of if the "Women and children first" policy of who got on the 
+# lifeboats held true. Hint: the answer is yes.
 
-# 1. Construct a statistical graphic showing how male vs female acceptance
-# varied by department.  Bonus:  Using google, make one of the axes reflect
-# percentage of applicants.
-# 2. Construct a statistical graphic showing the "competitiveness" of the
-# department as measured by acceptance rate.
+
+# We now load the UC Berkeley Admissions Data
+data(UCBAdmissions)
+UCB <- as.data.frame(UCBAdmissions)
+UCB
+
+
+# Q2: Investigate how male vs female acceptance varied by department.
+
+
+# Q3. Investigate the "competitiveness" of different departments as measured by acceptance rate.
+
+
+
+
+
+
+
+
+

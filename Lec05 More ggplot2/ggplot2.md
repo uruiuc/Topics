@@ -3,10 +3,7 @@ ggplot2 Continued
 author: Albert Y. Kim
 date: Monday 2016/2/29
 
-```{r, echo=FALSE}
-library(dplyr)
-library(ggplot2)
-```
+
 
 
 
@@ -27,13 +24,17 @@ Today's Exercise: UC Berkeley Admissions
 
 In 1973, the UC Berkeley was sued for bias against women who had applied for admission to graduate schools.  n=4526 applicants:
 
-```{r, echo=FALSE}
-data(UCBAdmissions)
-UCBAdmissions <- UCBAdmissions %>% 
-  as.data.frame() %>% 
-  group_by(Admit, Gender) %>% 
-  summarise(Freq = sum(Freq))
-UCBAdmissions
+
+```
+Source: local data frame [4 x 3]
+Groups: Admit [?]
+
+     Admit Gender  Freq
+    (fctr) (fctr) (dbl)
+1 Admitted   Male  1198
+2 Admitted Female   557
+3 Rejected   Male  1493
+4 Rejected Female  1278
 ```
 
 
@@ -41,23 +42,14 @@ UCBAdmissions
 Today's Exercise: UC Berkeley Admissions
 ========================================================
 
-```{r, echo=FALSE}
-UCBPlot <- ggplot(data=UCBAdmissions, aes(x=Gender, y=Freq, fill=Admit)) +
-  ggtitle("Acceptance Rate Split by Gender") +
-  xlab("Gender")
-UCBPlot + geom_bar(stat = "identity") +
-  ylab("# of Applicants")
-```
+![plot of chunk unnamed-chunk-3](ggplot2-figure/unnamed-chunk-3-1.png)
 
 
 
 Today's Exercise: UC Berkeley Admissions
 ========================================================
 
-```{r, echo=FALSE}
-UCBPlot + geom_bar(stat = "identity", position="fill") +
-  ylab("Prop of Applicants")
-```
+![plot of chunk unnamed-chunk-4](ggplot2-figure/unnamed-chunk-4-1.png)
 
 
 
@@ -66,10 +58,23 @@ Today's Exercise: UC Berkeley Admissions
 
 However, there was another variable researchers could consider: `Dept` applied to.
 
-```{r, echo=FALSE}
-data(UCBAdmissions)
-UCBAdmissions <- as.data.frame(UCBAdmissions) %>% tbl_df()
-UCBAdmissions
+
+```
+Source: local data frame [24 x 4]
+
+      Admit Gender   Dept  Freq
+     (fctr) (fctr) (fctr) (dbl)
+1  Admitted   Male      A   512
+2  Rejected   Male      A   313
+3  Admitted Female      A    89
+4  Rejected Female      A    19
+5  Admitted   Male      B   353
+6  Rejected   Male      B   207
+7  Admitted Female      B    17
+8  Rejected Female      B     8
+9  Admitted   Male      C   120
+10 Rejected   Male      C   205
+..      ...    ...    ...   ...
 ```
 
 
