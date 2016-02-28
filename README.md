@@ -5,8 +5,10 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
 
 ### Week 3: 2/29 - 3/4
 
-* **Lec05: More `ggplot2`**
-    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec05" target="_blank">Slides</a>: 
+* **Lec05: R Markdown and More `ggplot2`**
+    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec05b" target="_blank">Slides</a>: Markdown and R Markdown
+    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec05" target="_blank">Slides</a>: More ggplot2
+    + Link to [R Markdown Debugging Checks](https://docs.google.com/document/d/1P7IyZ4On9OlrCOhygFxjC7XhQqyw8OludwChz-uFd_o/edit?usp=sharing)
     + Files: `Lec05.R` Exercise.
 
 
