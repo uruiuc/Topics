@@ -40,7 +40,8 @@ diamonds <- sample_n(diamonds, size = 500)
 # - we facet plot them by clarity. 
 # This way we can compare the relationship between carat and price, for
 # different tables, AND split by different clarity.
-# acets are a VERY powerful tool.
+#
+# Facets are a VERY powerful tool.
 ggplot(data=diamonds, aes(x = carat, y = price, colour = cut, size = table)) +
   geom_point() +
   facet_wrap(~clarity, nrow=2) +
@@ -101,7 +102,9 @@ ggplot(data=diamonds, aes(x=carat)) +
 
 # The default aesthetic mapping carat to the y-axis is based on count.  Note,
 # since "count" is not a variable name in our dataset, we need to put ".."
-# around it.
+# around it. Note here we defined the aesthetic within the geom. So
+# -the aes(x=carat) is global to the entire plot
+# -the aes(y=..count..) is specific to the geom_histogram
 ggplot(data=diamonds, aes(x=carat)) +
   geom_histogram(aes(y = ..count..))
 
@@ -128,7 +131,7 @@ Oxboys
 
 # For simplicity, let's consider Subject 1 only for now:
 subject_1 <- Oxboys %>% 
-  filter(Subject == 2)
+  filter(Subject == 1)
 subject_1
 
 # We plot a geom_line(). Easy enough!
@@ -176,8 +179,7 @@ Titanic
 # -a "binned" count for each of the 32 categories a passenger could be: 
 #  Class (4 levels) x Sex (2 levels) x Age (2 levels) X Survived (2 levels)
 # -and not individual people on the boat. If the rows corresponded to
-#  individuals, the data set would be 2201.
-# More on this later.
+#  individuals, the data set would be 2201 rows long.
 
 # Simple barplot: survival by Class:
 survival_by_class <- Titanic %>% 
