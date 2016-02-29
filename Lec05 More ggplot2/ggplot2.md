@@ -42,14 +42,14 @@ Groups: Admit [?]
 Today's Exercise: UC Berkeley Admissions
 ========================================================
 
-![plot of chunk unnamed-chunk-3](ggplot2-figure/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](ggplot2-figure/unnamed-chunk-3-1.png)
 
 
 
 Today's Exercise: UC Berkeley Admissions
 ========================================================
 
-![plot of chunk unnamed-chunk-4](ggplot2-figure/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](ggplot2-figure/unnamed-chunk-4-1.png)
 
 
 
