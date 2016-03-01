@@ -10,6 +10,13 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
     + <a href="http://rpubs.com/rudeboybert/MATH216_Lec05" target="_blank">Slides</a>: More ggplot2
     + Link to [R Markdown Debugging Checks](https://docs.google.com/document/d/1P7IyZ4On9OlrCOhygFxjC7XhQqyw8OludwChz-uFd_o/edit?usp=sharing)
     + Files: `Lec05.R` Exercise.
+* **Lec06: Finishing `ggplot2` and Tidy Data using `tidyr`**
+    + <a href="https://github.com/Middlebury-Data-Science/Topics/blob/master/Lec06%20Tidy%20Data%20with%20tidyr/DataWranglingWithR.pdf" target="_blank">Slides</a>: `tidyr` Package (Click on RAW to download)
+    + Files:
+        + `Lec06.R` Exercise.
+        + `popdensity1990_00_10.csv`
+
+
 
 
 
