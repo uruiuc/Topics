@@ -22,20 +22,40 @@ library(babynames)
 
 # Use facets!
 data(Titanic)
+Titanic <- as.data.frame(Titanic)
 ggplot(data=Titanic, aes(x=Class, y=Freq, fill=Survived)) +
   geom_bar(stat="identity", position = "fill") +
   facet_grid(Age ~ Sex)
+# We observe that for any class and age, men died more than women (bigger pink
+# bars). Also for any class and sex, children (top row) survived at a higher
+# rate. Also, it's nice to see that the White Star Line Company didn't employ
+# any children!
 
 
+# Q2: Investigate how male vs female acceptance varied by department.
+data(UCBAdmissions)
+UCB <- as.data.frame(UCBAdmissions)
+UCB
 ggplot(UCB, aes(x=Gender, y=Freq, fill = Admit)) +
   geom_bar(stat = "identity", position="fill") +
   facet_wrap(~ Dept, nrow = 2) +
-  scale_y_continuous(labels = percent) +
   ggtitle("Acceptance Rate Split by Gender & Department") +
   xlab("Gender") +
+  ylab("Prop of Applicants")
+
+
+# Q3. Investigate the "competitiveness" of different departments as measured by acceptance rate.
+ggplot(UCB, aes(x=Dept, y=Freq, fill = Admit)) +
+  geom_bar(stat = "identity", position="fill") +
+  ggtitle("Acceptance Rate Split by Department") +
+  xlab("Dept") +
   ylab("% of Applicants")
 
-ggplot(UCB, aes(x=Dept, y=Freq, fill = Admit)) +
+UCB_competitiveness <- UCB %>% 
+  group_by(Admit, Dept) %>% 
+  summarise(Freq=sum(Freq))
+
+ggplot(UCB_competitiveness, aes(x=Dept, y=Freq, fill = Admit)) +
   geom_bar(stat = "identity", position="fill") +
   ggtitle("Acceptance Rate Split by Department") +
   xlab("Dept") +
@@ -43,7 +63,7 @@ ggplot(UCB, aes(x=Dept, y=Freq, fill = Admit)) +
 
 # Eye candy:  change up the color scheme by changing scale
 # See http://colorbrewer2.org/ for different palette names
-ggplot(UCB, aes(x=Dept, y=Freq, fill = Admit)) +
+ggplot(UCB_competitiveness, aes(x=Dept, y=Freq, fill = Admit)) +
   geom_bar(stat = "identity", position="fill") +
   ggtitle("Acceptance Rate Split by Department") +
   xlab("Dept") +
@@ -53,26 +73,8 @@ ggplot(UCB, aes(x=Dept, y=Freq, fill = Admit)) +
 
 
 
-
-
 #------------------------------------------------------------------------------
-# Understanding geom_bar(stat="bin") vs geom_bar(stat="identity")
-#------------------------------------------------------------------------------
-ex <- data.frame(count=c(rep("A", 5), rep("B", 3)))
-ex
-ggplot(ex, aes(x=count)) + geom_bar()
-ggplot(ex, aes(x=count)) + geom_bar(stat="bin")
-ex2 <- data.frame(name=c("A", "B"), count=c(5, 3))
-ex2
-ggplot(ex2, aes(x=name, y=count)) + geom_bar()
-ggplot(ex2, aes(x=name, y=count)) + geom_bar(stat="identity")
-
-
-
-
-
-#------------------------------------------------------------------------------
-# Examples of geoms
+# Finishing ggplot2: Examples of other geom's
 #------------------------------------------------------------------------------
 # We're going to work with the following data frame
 df <- data.frame(
@@ -85,12 +87,8 @@ df
 # We set up the "base of the plot" in as general a fashion as possible
 p <- ggplot(data=df, aes(x, y, label = label)) + xlab(NULL) + ylab(NULL)
 
-# Points
+# geom_point: Points
 p + geom_point(size=5, color="darkorange") + ggtitle("geom_point")
-
-# Bars.  Here we need to set the "statistical transformation" to "identity", b/c
-# the default for geom_bar is "bin"
-p + geom_bar(stat="identity") + ggtitle("geom_bar(stat=\"identity\")")
 
 # Line, ordered by x value
 p + geom_line(size=4) + ggtitle("geom_line")
@@ -108,7 +106,7 @@ p + geom_text(size = 10, angle=90) + ggtitle("geom_text")
 p + geom_tile() + ggtitle("geom_tile")
 
 # Polygon with vertices defined at coordinates
-p + geom_polygon(color="red", size=4, fill="green") + ggtitle("geom_polygon")
+p + geom_polygon(color="blue", size=4, fill="orange") + ggtitle("geom_polygon")
 
 
 
@@ -117,6 +115,7 @@ p + geom_polygon(color="red", size=4, fill="green") + ggtitle("geom_polygon")
 #------------------------------------------------------------------------------
 # tidy Data
 #------------------------------------------------------------------------------
+# We create 3 new data frames: pollution, cases, storms
 pollution <- structure(
   list(city = c("New York", "New York", "London", "London", "Beijing", "Beijing"),
        size = c("large", "small", "large", "small", "large", "small"),
@@ -143,6 +142,9 @@ storms <- structure(
   class = c("tbl_df", "data.frame"),
   row.names = c(NA, -6L))
 
+pollution
+cases
+storms
 
 
 
