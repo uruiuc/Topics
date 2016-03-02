@@ -11,10 +11,11 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
     + Link to [R Markdown Debugging Checks](https://docs.google.com/document/d/1P7IyZ4On9OlrCOhygFxjC7XhQqyw8OludwChz-uFd_o/edit?usp=sharing)
     + Files: `Lec05.R` Exercise.
 * **Lec06: Finishing `ggplot2` and Tidy Data using `tidyr`**
-    + <a href="https://github.com/Middlebury-Data-Science/Topics/blob/master/Lec06%20Tidy%20Data%20with%20tidyr/DataWranglingWithR.pdf" target="_blank">Slides</a>: `tidyr` Package (Click on RAW to download)
+    + <a href="https://github.com/Middlebury-Data-Science/Topics/blob/master/Lec06%20Tidy%20Data%20with%20tidyr/UCB.pdf" target="_blank">Slides</a>: UC Berkeley admissions data discussions (Click on RAW to download)
+    + <a href="https://github.com/Middlebury-Data-Science/Topics/blob/master/Lec06%20Tidy%20Data%20with%20tidyr/DataWranglingWithR.pdf" target="_blank">Slides</a>: `tidyr` Package
     + Files:
         + `Lec06.R` Exercise.
-        + `popdensity1990_00_10.csv`
+        + `popdensity1990_00_10.csv` 1990, 2000, 2010 Census data.
 
 
 
