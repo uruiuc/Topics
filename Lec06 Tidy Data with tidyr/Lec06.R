@@ -28,11 +28,12 @@ ggplot(data=Titanic, aes(x=Class, y=Freq, fill=Survived)) +
   facet_grid(Age ~ Sex)
 # We observe that for any class and age, men died more than women (bigger pink
 # bars). Also for any class and sex, children (top row) survived at a higher
-# rate. Also, it's nice to see that the White Star Line Company didn't employ
-# any children!
+# rate. Also, it's nice to see that the White Star Line didn't employ any 
+# children!
 
 
 # Q2: Investigate how male vs female acceptance varied by department.
+# i.e. Slide 17/27 of UCB.pdf
 data(UCBAdmissions)
 UCB <- as.data.frame(UCBAdmissions)
 UCB
@@ -44,17 +45,24 @@ ggplot(UCB, aes(x=Gender, y=Freq, fill = Admit)) +
   ylab("Prop of Applicants")
 
 
-# Q3. Investigate the "competitiveness" of different departments as measured by acceptance rate.
+# Q3. Investigate the "competitiveness" of different departments as measured by
+# acceptance rate.
+# i.e. Slide 14/27 of UCB.pdf
+
+# We first use the same plot as above, but switch out the Gender variable for Dept.
 ggplot(UCB, aes(x=Dept, y=Freq, fill = Admit)) +
   geom_bar(stat = "identity", position="fill") +
   ggtitle("Acceptance Rate Split by Department") +
   xlab("Dept") +
   ylab("% of Applicants")
 
+# Why are the colors mixed? b/c UCB has the admittance split by Gender. So 
+# aggregate over Gender by group_by Admit and Dept:
 UCB_competitiveness <- UCB %>% 
   group_by(Admit, Dept) %>% 
   summarise(Freq=sum(Freq))
 
+# Much better:
 ggplot(UCB_competitiveness, aes(x=Dept, y=Freq, fill = Admit)) +
   geom_bar(stat = "identity", position="fill") +
   ggtitle("Acceptance Rate Split by Department") +
@@ -84,7 +92,8 @@ df <- data.frame(
 )
 df
 
-# We set up the "base of the plot" in as general a fashion as possible
+# We set up the "base of the plot" in as general a fashion as possible. i.e.
+# we don't define the geom_ just yet:
 p <- ggplot(data=df, aes(x, y, label = label)) + xlab(NULL) + ylab(NULL)
 
 # geom_point: Points
@@ -108,6 +117,8 @@ p + geom_tile() + ggtitle("geom_tile")
 # Polygon with vertices defined at coordinates
 p + geom_polygon(color="blue", size=4, fill="orange") + ggtitle("geom_polygon")
 
+# Refer to your cheatsheet and the ggplot2 website for the different geoms.
+
 
 
 
@@ -115,7 +126,8 @@ p + geom_polygon(color="blue", size=4, fill="orange") + ggtitle("geom_polygon")
 #------------------------------------------------------------------------------
 # tidy Data
 #------------------------------------------------------------------------------
-# We create 3 new data frames: pollution, cases, storms
+# We create 3 new data frames. pollution, cases, storms. Run the next 25 lines
+# to load them into R:
 pollution <- structure(
   list(city = c("New York", "New York", "London", "London", "Beijing", "Beijing"),
        size = c("large", "small", "large", "small", "large", "small"),
@@ -191,31 +203,31 @@ unite(storms2, "date", year, month, day, sep = "-")
 #-------------------------------------------------------------------------------
 # EXERCISES
 #-------------------------------------------------------------------------------
-# From Eleanor: Census data with total population, land area, and population
-# density in wide format
-census <- read.csv("popdensity1990_00_10.csv", header=TRUE) %>% tbl_df()
+# From a previous version of this class: Census data from 1990 with total 
+# population, land area, and population density in wide format.
+census <- read.csv("popdensity1990_00_10.csv", header=TRUE) %>% 
+  tbl_df()
 View(census)
 
 
-# EXERCISE: Add varibles "county_name" and "state_name" to the census data
+# Q1: Add varibles "county_name" and "state_name" to the census data
 # frame, which are derived from the variable "QName".  Do this in a manner that
 # keeps the variable "QName" in the data frame.
 
 
-
-# EXERCISE: Create a new variable FIPS_code that follows the federal standard:
+# Q2: Create a new variable FIPS_code that follows the federal standard:
 # http://www.policymap.com/blog/wp-content/uploads/2012/08/FIPSCode_Part4.png
 # As a sanity check, ensure that the county with FIPS code "08031" is Denver
-# County, Colorado.  Hint: str_pad() command in the stringr
+# County, Colorado.  Hint: the str_pad() command in the stringr package might
+# come in handy
+
+
+# Q3: Plot histograms of the population per county, where we have the
+# histograms facetted by year (1990, 2000, 2010).
 
 
 
-# EXERCISE: Plot histograms of the population per county, where we have the
-# histograms facetted by year.
-
-
-
-# EXERCISE: Now consider the babynames data set which is in tidy format.  For
+# Now consider the babynames data set which is in tidy format.  For
 # example, consider the top male names from the 1880's:
 babynames
 filter(babynames, year >=1880 & year <= 1889, sex=="M") %>%
@@ -225,10 +237,10 @@ filter(babynames, year >=1880 & year <= 1889, sex=="M") %>%
   arrange(desc(n))
 
 
-# The most popular male and female names in the 1890's were John and Mary.
+# Q4: The most popular male and female names in the 1890's were John and Mary.
 # Present the proportion for all males named John and all females named Mary
 # (some males were recorded as females, for example) for each of the 10 years in
-# the  1890's in wide format.  i.e. your table should have two rows, and 11
+# the 1890's in wide format.  i.e. your table should have two rows, and 11
 # columns: name and the one for each year
 
 
