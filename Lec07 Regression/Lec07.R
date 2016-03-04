@@ -1,7 +1,7 @@
-library(tidyr)
 library(dplyr)
 library(ggplot2)
 library(stringr)
+library(tidyr)
 library(babynames)
 
 # This package allows us to read .dta STATA files into R via read.dta().
@@ -45,6 +45,8 @@ storms <- structure(
 # Q1: Add varibles "county_name" and "state_name" to the census data
 # frame, which are derived from the variable "QName".  Do this in a manner that
 # keeps the variable "QName" in the data frame.
+
+# You need to change the following so that it reads the file from your computer:
 census <- read.csv("~/Documents/Teaching/MATH216/Topics/Lec06 Tidy Data with tidyr/popdensity1990_00_10.csv") %>% tbl_df()
 
 # Note there needs to be a space
@@ -138,35 +140,41 @@ kid.iq
 #------------------------------------------------
 # Model 0: Just the average
 #------------------------------------------------
-p <- ggplot(data=kid.iq, aes(x=kid_score)) + geom_histogram()
-p
+plot0 <- ggplot(data=kid.iq, aes(x=kid_score)) + geom_histogram()
+plot0
 
 ybar <- mean(kid.iq$kid_score)
-p + geom_vline(xintercept=ybar, col="red", size=1)
+plot0 + geom_vline(xintercept=ybar, col="red", size=1)
 
 
 
 #------------------------------------------------
 # Model 1: Include mom's high school information
 #------------------------------------------------
-means <- group_by(kid.iq, mom_hs) %>%
+means <- kid.iq %>% 
+  group_by(mom_hs) %>%
   summarise(mean=mean(kid_score))
 means
 
 # Note we make mom_hs a categorical variable by as.factor() or factor()'ing it
-ggplot(kid.iq, aes(x=as.factor(mom_hs), y=kid_score)) + geom_boxplot()
-ggplot(kid.iq, aes(x=kid_score, y=..density..)) + geom_histogram() +
+ggplot(kid.iq, aes(x=as.factor(mom_hs), y=kid_score)) + 
+  geom_boxplot()
+
+ggplot(kid.iq, aes(x=kid_score, y=..density..)) + 
+  geom_histogram() +
   facet_wrap(~ mom_hs, ncol=1)
 
-p <- ggplot(kid.iq, aes(x=as.factor(mom_hs), y=kid_score, color=as.factor(mom_hs))) + geom_point()
-p
+plot1 <- ggplot(kid.iq, aes(x=as.factor(mom_hs), y=kid_score, color=as.factor(mom_hs))) + 
+  geom_point()
+plot1
 # Now add horizontal lines corresponding to the means.  Note the [[2]] says
 # extract the second column
-p + geom_hline(yintercept=means[[2]], color=c("#F8766D", "#00BFC4"), size=1)
+plot1 + geom_hline(yintercept=means[[2]], color=c("#F8766D", "#00BFC4"), size=1)
 
 # This is how we fit a linear (regression) model in R:
 model1 <- lm(kid_score ~ mom_hs, data=kid.iq)
 model1
+
 # The last output isn't so helpful; here is the full regression table.  Compare
 # the table to the means data frame above
 summary(model1)
@@ -182,8 +190,9 @@ resid(model1) # the residuals
 #------------------------------------------------
 # Model 2: Include mom's IQ
 #------------------------------------------------
-p <- ggplot(kid.iq, aes(x=mom_iq, y=kid_score)) + geom_point()
-p
+plot2 <- ggplot(kid.iq, aes(x=mom_iq, y=kid_score)) + 
+  geom_point()
+plot2
 
 model2 <- lm(kid_score ~ mom_iq, data=kid.iq)
 summary(model2)
@@ -192,24 +201,25 @@ summary(model2)
 # brackets:
 b <- coefficients(model2)
 b
-p + geom_abline(intercept=b[1], slope=b[2], col="blue", size=1)
+plot2 + geom_abline(intercept=b[1], slope=b[2], col="blue", size=1)
 
 # We can do this quick via geom_smooth()
-p + geom_smooth(method="lm", size=1, level=0.95)
+plot2 + geom_smooth(method="lm", size=1, level=0.95)
 
 
 
 #------------------------------------------------
 # Model 3: Include BOTH mom's IQ and high
 #------------------------------------------------
-ggplot(kid.iq, aes(x=mom_iq, y=kid_score, color=mom_hs)) + geom_point()
+ggplot(kid.iq, aes(x=mom_iq, y=kid_score, color=mom_hs)) + 
+  geom_point()
 
 # Note we have the multiple colors b/c R is treating mom_hs as a numerical
 # variable, when really it is a categorical variable.  So we convert it to a
 # categorical variable via factor() or as.factor()
-p <- ggplot(kid.iq, aes(x=mom_iq, y=kid_score, color=factor(mom_hs))) +
+plot3 <- ggplot(kid.iq, aes(x=mom_iq, y=kid_score, color=factor(mom_hs))) +
   geom_point(size=3)
-p
+plot3
 
 
 # Model 3.a) We fit the first model assuming an intercept shift, or just the
@@ -220,7 +230,8 @@ summary(model3a)
 # Plot these lines
 b <- coefficients(model3a)
 b
-p + geom_abline(intercept=b[1], slope=b[2], col="#F8766D", size=1) +
+plot3 + 
+  geom_abline(intercept=b[1], slope=b[2], col="#F8766D", size=1) +
   geom_abline(intercept=b[1]+b[3], slope=b[2], col="#00BFC4", size=1)
 
 
