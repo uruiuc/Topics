@@ -16,7 +16,10 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
     + Files:
         + `Lec06.R` Exercise.
         + `popdensity1990_00_10.csv` 1990, 2000, 2010 Census data.
-
+* **Lec07: Regression in R**
+    + In-class Lecture
+    + Files: `Lec07.R` Exercise.
+        
 
 
 
