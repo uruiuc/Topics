@@ -65,10 +65,10 @@ select(census, county_name, state_name)
 # We can't treat STATE and COUNTY as numerical variables, b/c we need the single
 # digit ID's, like Alabama having STATE code 1.  Rather we treat them as
 # character strings "padded with 0's".  Then we use the unite() command.
-census <-
-  mutate(census,
-         state_code = str_pad(STATE, 2, pad="0"),
-         county_code = str_pad(COUNTY, 3, pad="0")
+census <- census %>% 
+  mutate(
+    state_code = str_pad(STATE, 2, pad="0"),
+    county_code = str_pad(COUNTY, 3, pad="0")
   )
 census <- unite(census, "FIPS_code", state_code, county_code, sep = "")
 
@@ -85,9 +85,11 @@ filter(census, FIPS_code=="08031")
 # tidy format.  We create a new data frame consisting of county_name,
 # state_name, FIPS_code, and total population and gather() it in long format
 # "keyed" by year.
-totalpop <- select(census, county_name, state_name, contains("totalpop"))
+totalpop <- census %>% 
+  select(county_name, state_name, contains("totalpop"))
 
-totalpop <- gather(totalpop, "year", totalpop, contains("totalpop")) %>%
+totalpop <- totalpop %>% 
+  gather("year", totalpop, contains("totalpop")) %>%
   mutate(year=factor(year, labels=c("1990", "2000", "2010")))
 
 # Now that we have a keying variable "year", we can easily facet this plot
@@ -108,9 +110,10 @@ ggplot(totalpop, aes(x=totalpop, y=)) +
 # table should have two rows, and 11 columns: name and the one for each year
 
 # We remove the "n" and "sex" variable to keep the table looking clean.
-filter(babynames,
-       (name=="Mary" & sex=="F") | (name=="John" & sex=="M"),
-       year >=1880 & year <= 1889
+babynames %>% 
+filter(
+  (name=="Mary" & sex=="F") | (name=="John" & sex=="M"),
+  year >=1880 & year <= 1889
 ) %>%
   select(-n, -sex) %>%
   spread(year, prop)
@@ -140,11 +143,13 @@ kid.iq
 #------------------------------------------------
 # Model 0: Just the average
 #------------------------------------------------
-plot0 <- ggplot(data=kid.iq, aes(x=kid_score)) + geom_histogram()
+plot0 <- ggplot(data=kid.iq, aes(x=kid_score)) + 
+  geom_histogram()
 plot0
 
 ybar <- mean(kid.iq$kid_score)
-plot0 + geom_vline(xintercept=ybar, col="red", size=1)
+plot0 + 
+  geom_vline(xintercept=ybar, col="red", size=1)
 
 
 
@@ -201,10 +206,12 @@ summary(model2)
 # brackets:
 b <- coefficients(model2)
 b
-plot2 + geom_abline(intercept=b[1], slope=b[2], col="blue", size=1)
+plot2 + 
+  geom_abline(intercept=b[1], slope=b[2], col="blue", size=1)
 
 # We can do this quick via geom_smooth()
-plot2 + geom_smooth(method="lm", size=1, level=0.95)
+plot2 + 
+  geom_smooth(method="lm", size=1, level=0.95)
 
 
 
