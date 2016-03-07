@@ -3,6 +3,18 @@
 The course syllabus (and setup instructions) can be found [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
 
+### Week 4: 3/7 - 3/11
+
+* **Lec08: More Regression**
+    + In-class Lecture
+    + Files: `Lec08.R` Exercise.
+* **Lec09: **        
+
+
+
+
+
+
 ### Week 3: 2/29 - 3/4
 
 * **Lec05: R Markdown and More `ggplot2`**
@@ -16,7 +28,7 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
     + Files:
         + `Lec06.R` Exercise.
         + `popdensity1990_00_10.csv` 1990, 2000, 2010 Census data.
-* **Lec07: Regression in R**
+* **Lec07: Regression to the Mean**
     + In-class Lecture
     + Files: `Lec07.R` Exercise.
         
