@@ -120,7 +120,9 @@ plot2 +
 
 # What we can do is "standardize" the predictor so its centered at 0 and has
 # SD = 1.
-kid.iq <- mutate(kid.iq, z_mom_iq = (mom_iq - mean(mom_iq))/sd(mom_iq))
+kid.iq <- kid.iq %>% 
+  mutate(z_mom_iq = (mom_iq - mean(mom_iq))/sd(mom_iq))
+
 ggplot(kid.iq, aes(x=z_mom_iq, y=kid_score)) + 
   geom_point()
 
@@ -146,8 +148,18 @@ ggplot(data=heights, aes(x=earn)) +
 
 # So we log base 10 the earnings
 heights <- mutate(heights, log_earn=log10(earn))
+
+# We can plot the log-values
 ggplot(data=heights, aes(x=log_earn)) +
-  geom_histogram()
+  geom_histogram() +
+  xlab("Log10 Earnings")
+
+# Or alternatively change the scale of the x-axes to be base10, so that we can
+# read the original values.
+ggplot(data=heights, aes(x=earn)) +
+  geom_histogram() +
+  scale_x_log10() +
+  xlab("Earnings (log10-scale)")
 
 # We fit a regression to this model
 model6 <- lm(log_earn~height, data=heights)

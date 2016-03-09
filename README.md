@@ -6,9 +6,8 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
 ### Week 4: 3/7 - 3/11
 
 * **Lec08: More Regression**
-    + In-class Lecture
+    + In-class Lecture and <a href="http://htmlpreview.github.io/?https://raw.githubusercontent.com/Middlebury-Data-Science/Topics/master/Lec08%20More%20Regression/Orders_of_Magnitude.html#1" target="_blank">Slides</a>
     + Files: `Lec08.R` Exercise.
-* **Lec09: **        
 
 
 
@@ -31,7 +30,7 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
 * **Lec07: Regression to the Mean**
     + In-class Lecture
     + Files: `Lec07.R` Exercise.
-        
+
 
 
 
@@ -52,10 +51,12 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
     + **Grammar of Graphics**
         + <a href="http://rpubs.com/rudeboybert/MATH216_Lec03b" target="_blank">Slides</a>: Discussion on [The Grammar of Graphics paper](http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf).
         + Files: `babynames.Rmd`. Example of Shiny app (interactive visualization); install `shiny` and listed packages first.
-            
+      
 
 
             
+
+
             
 ### Week 1: 2/15 - 2/19
 

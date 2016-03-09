@@ -37,6 +37,8 @@ table <-
 
 ## Example
 
+Say you have 3 people who get increases in their income:
+
 ```{r, echo=FALSE}
 table %>% 
   select(Person, `Income in 2000`, `Income in 2010`) %>% 
@@ -47,6 +49,8 @@ table %>%
 
 ## Example
 
+Does the increase of $40K mean the same for Person X and Y?
+
 ```{r, echo=FALSE}
 table %>% 
   select(Person, `Income in 2000`, `Income in 2010`, `Absolute Diff`) %>% 
@@ -55,7 +59,10 @@ table %>%
 
 
 
+
 ## Example
+
+No, b/c relatively speaking the difference is different.
 
 ```{r, echo=FALSE}
 table %>% 
