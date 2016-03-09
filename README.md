@@ -8,6 +8,12 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
 * **Lec08: More Regression**
     + In-class Lecture and <a href="http://htmlpreview.github.io/?https://raw.githubusercontent.com/Middlebury-Data-Science/Topics/master/Lec08%20More%20Regression/Orders_of_Magnitude.html#1" target="_blank">Slides</a>
     + Files: `Lec08.R` Exercise.
+* **Lec09: Logistic Regression and OkCupid Data**
+    + In-class Lecture and <a href="http://rpubs.com/rudeboybert/MATH216_Lec09" target="_blank">Slides</a>
+    + Files:
+        + `Lec09.R` Exercise.
+        + [OkCupid Data CSV](https://github.com/rudeboybert/JSE_OkCupid/raw/master/profiles.csv.zip)
+
 
 
 
