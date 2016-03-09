@@ -1,0 +1,64 @@
+---
+title: "Orders of Magnitude"
+author: "Albert Y. Kim"
+date: "March 9, 2016"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, echo=FALSE}
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(knitr))
+
+table <- 
+  data.frame(
+    Person = c("X", "Y", "Z"),
+    Income2000 = c(10000, 1010000, 1000000),
+    Income2010 = c(50000, 1050000, 5000000)
+  ) %>%
+  mutate(
+    `Absolute Diff` = Income2010 - Income2000,
+    `Relative Diff` = round(Income2010/Income2000,3),
+    Income2000 = formatC(Income2000, format="d", big.mark=','),
+    Income2010 = formatC(Income2010, format="d", big.mark=','),
+    `Absolute Diff` = formatC(`Absolute Diff`, format="d", big.mark=',')
+  ) %>% 
+  rename(
+    `Income in 2000` = Income2000,
+    `Income in 2010` = Income2010
+  )
+```
+
+
+
+## Example
+
+```{r, echo=FALSE}
+table %>% 
+  select(Person, `Income in 2000`, `Income in 2010`) %>% 
+  kable()
+```
+
+
+
+## Example
+
+```{r, echo=FALSE}
+table %>% 
+  select(Person, `Income in 2000`, `Income in 2010`, `Absolute Diff`) %>% 
+  kable()
+```
+
+
+
+## Example
+
+```{r, echo=FALSE}
+table %>% 
+  kable()
+```
+
