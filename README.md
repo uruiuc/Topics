@@ -3,6 +3,16 @@
 The course syllabus (and setup instructions) can be found [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
 
+### Week 5: 3/14 - 3/18
+
+* **Lec11: **
+
+
+
+
+
+
+
 ### Week 4: 3/7 - 3/11
 
 * **Lec08: More Regression**
@@ -13,6 +23,8 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
     + Files:
         + `Lec09.R` Exercise.
         + [OkCupid Data CSV](https://github.com/rudeboybert/JSE_OkCupid/raw/master/profiles.csv.zip)
+* **Lec10: More Logistic Regression**
+    + In-class Lecture
 
 
 
