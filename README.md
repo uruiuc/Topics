@@ -5,8 +5,9 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
 
 ### Week 5: 3/14 - 3/18
 
-* **Lec11: **
-
+* **Lec11: Even More Logistic Regression**
+    + In-class Lecture
+    + Files: `Lec11.R` Exercise.
 
 
 
