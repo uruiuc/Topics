@@ -8,7 +8,13 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
 * **Lec11: Even More Logistic Regression**
     + In-class Lecture
     + Files: `Lec11.R` Exercise.
-
+* **HW-1 Discussion**
+    + In lab discussion
+    + Files: `HW-1_Albert_Notes.Rmd` from the `HW-1` folder. 
+    + Setup:
+        + Save `HW-1_Albert_Notes.Rmd` in your `HW-1` project folder.
+        + If you haven't already, install the `DT`, `knitr`, and `plotly` packages.
+        + Load the datasets in your console.
 
 
 
