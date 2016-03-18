@@ -15,7 +15,9 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
         + Save `HW-1_Albert_Notes.Rmd` in your `HW-1` project folder.
         + If you haven't already, install the `DT`, `knitr`, and `plotly` packages.
         + Load the datasets in your console.
-
+* **Lec13: Final Project and Introduction to `lubridate`**
+    + Final project [guidelines](http://htmlpreview.github.io/?https://raw.githubusercontent.com/Middlebury-Data-Science/Topics/master/Lec13%20Project/project.html). Your project proposal is due Wednesday April 6th (after break) at 11:15.
+    + 
 
 
 
