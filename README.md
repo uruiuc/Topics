@@ -17,7 +17,8 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
         + Load the datasets in your console.
 * **Lec13: Final Project and Introduction to `lubridate`**
     + Final project [guidelines](http://htmlpreview.github.io/?https://raw.githubusercontent.com/Middlebury-Data-Science/Topics/master/Lec13%20Project/project.html). Your project proposal is due Wednesday April 6th (after break) at 11:15.
-    + 
+    + Open this [Quandl](https://www.quandl.com/data/BAVERAGE/USD-USD-BITCOIN-Weighted-Price) link.
+    + Files: `Lec13.R` Exercise from "Lec13: Dates and Times with lubridate" folder.
 
 
 
