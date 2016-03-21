@@ -33,10 +33,11 @@ browseVignettes()
 arrive <- ymd_hms("2011-03-04 12:00:00", tz = "Pacific/Auckland")
 leave <- ymd_hms("2011-08-10 14:00:00", tz = "Pacific/Auckland")
 
-# ymd_hms() is a cookie-cutter function.  parse_date_time() allows more
-# flexible parsing of Date/Time Objects than ymd_hms(), but requires more
-# careful specification.  Look at the help file and look at Details section
-?parse_date_time()
+# ymd_hms() is a cookie-cutter function, meaning it's really easy to use, but
+# it's not all that powerful at dealing with special cases.
+
+# parse_date_time() allows more flexible parsing of Date/Time Objects than
+# ymd_hms(), but requires more careful specification.
 
 # Example say we have a date/time object that's not "clean"
 x <- "Sun 2003 Nov 30 19:48:20"
@@ -48,10 +49,20 @@ parse_date_time(x, "%y %b %d %H%M%S")
 # lubridate knows to ignore weekday name.  Look at the list of formats in the
 # help file to get a sense for how this function parses the date.
 
+# Question: Why is month read in as "b" and not "m"?
+# Answer: Look at the help file below and scroll down to the Details section. 
+# Where are there so many different cases? Because there are many many different
+# ways people write dates!
+?parse_date_time()
+
+# IMPORTANT NOTE: parse_data_time() is an elephant gun. Only use it when you 
+# really need it. If you can get away with using a simple function like ymd() or
+# ymd_hms(), then use the simpler one.
+
 # EXERCISE Q1: As it is, the dates in the bitcoin data are simply character 
-# strings.  Convert the date variable from character strings to  date/time
-# objects and plot a time series of the avg price of bitcoins relative to USD vs
-# date.  What is the overall trend?
+# strings.  Convert the date variable from character strings to date/time 
+# objects (using the mutate() function) and plot a time series of the avg price
+# of bitcoins relative to USD vs date.  What is the overall trend?
 
 
 
