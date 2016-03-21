@@ -1,8 +1,7 @@
-# Install these packages:
-library(Quandl)
-library(lubridate)
 library(dplyr)
 library(ggplot2)
+library(lubridate)
+library(Quandl)
 
 
 #-------------------------------------------------------------------------------
@@ -25,8 +24,6 @@ bitcoin <- rename(bitcoin, Avg = `24h Average`, Total.Volume = `Total Volume`)
 # (example file).  You can also browse the source code.
 browseVignettes()
 
-# Go over the source code, but for each section, I've added some additional
-# notes.
 
 
 
@@ -119,9 +116,9 @@ jsm
 
 
 
-#---------------------------------------------------------------
+#-------------------------------------------------------------------------------
 # Interval functions
-#---------------------------------------------------------------
+#-------------------------------------------------------------------------------
 int_overlaps(jsm, auckland)
 int_start(jsm)
 int_flip(jsm)
