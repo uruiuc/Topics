@@ -3,7 +3,6 @@ library(ggplot2)
 library(lubridate)
 library(Quandl)
 
-
 #-------------------------------------------------------------------------------
 # Data for Today: Bitcoin Price vs USD Dollar
 # https://www.quandl.com/data/BAVERAGE/USD-USD-BITCOIN-Weighted-Price
@@ -17,11 +16,12 @@ bitcoin <- rename(bitcoin, Avg = `24h Average`, Total.Volume = `Total Volume`)
 
 
 
+
 #-------------------------------------------------------------------------------
 # Exercise for today
 #-------------------------------------------------------------------------------
-# Run this line, search for "lubridate", and click on HTML to get the "vignette"
-# (example file).  You can also browse the source code.
+# In case you haven't finished going over it, please finish going over the
+# vignette.
 browseVignettes()
 
 
@@ -48,11 +48,11 @@ parse_date_time(x, "%y %b %d %H%M%S")
 # lubridate knows to ignore weekday name.  Look at the list of formats in the
 # help file to get a sense for how this function parses the date.
 
+# EXERCISE Q1: As it is, the dates in the bitcoin data are simply character 
+# strings.  Convert the date variable from character strings to  date/time
+# objects and plot a time series of the avg price of bitcoins relative to USD vs
+# date.  What is the overall trend?
 
-# EXERCISE: As it is, the dates in the bitcoin data are simply character
-# strings.  Convert the date variable from character strings to "POSIXct"
-# date/time objects and plot a time series of the avg price of bitcoins relative
-# to USD vs date.  What is the overall trend?
 
 
 
@@ -78,10 +78,10 @@ arrive
 month(arrive) <- month(arrive) - 12
 arrive
 
-
-# EXERCISE: Create a new variable day.of.week which specifies the day of week
-# and compute the mean trading value split by day of week.  Which day of the
+# EXERCISE Q2: Create a new variable day.of.week which specifies the day of week
+# and compute the mean trading value split by day of week.  Which day of the 
 # week is there on average the most trading of bitcoins?
+
 
 
 
@@ -104,6 +104,7 @@ meeting
 
 
 
+
 #-------------------------------------------------------------------------------
 # Time Intervals
 #-------------------------------------------------------------------------------
@@ -113,6 +114,7 @@ jsm <- interval(ymd(20110720, tz = "Pacific/Auckland"), ymd(20110831, tz = "Paci
 # Compare these two time intervals.  A bit hard to read unfortunately
 auckland
 jsm
+
 
 
 
@@ -128,15 +130,16 @@ x <- c(ymd(20110725, tz = "Pacific/Auckland"), ymd(20110901, tz = "Pacific/Auckl
 x
 x %within% jsm
 
-
-# EXERCISE:  Using the interval and %within% commands, plot the times series
+# EXERCISE Q3: Using the interval and %within% commands, plot the times series
 # for the price of bitcoin to dates in 2013 and on.
 
 
-# EXERCISE.  Replot the above curve so that the 4 seasons are in different
+# EXERCISE Q4: Replot the above curve so that the 4 seasons are in different
 # colors.  For simplicity assume Winter = (Jan, Feb, Mar), etc.  Don't forget
 # the overall smoother.
 #
 # Hint: nested ifelse statements and the following %in%  function which is
 # similar to %within% but for individual elements, not intervals.
 c(3,5) %in% c(1,2,3)
+
+

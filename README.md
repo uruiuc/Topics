@@ -3,6 +3,15 @@
 The course syllabus (and setup instructions) can be found [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
 
+### Week 6: 3/21 - 3/25
+
+* **Lec14: Packages & Vignettes and Finishing Dates & Times**
+    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec14" target="_blank">Slides</a>: Hadleyverse, R Packages, and Vignettes.
+    + Files: `Lec14.R` Exercise.
+
+
+
+
 ### Week 5: 3/14 - 3/18
 
 * **Lec11: Even More Logistic Regression**
@@ -15,7 +24,7 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
         + Save `HW-1_Albert_Notes.Rmd` in your `HW-1` project folder.
         + If you haven't already, install the `DT`, `knitr`, and `plotly` packages.
         + Load the datasets in your console.
-* **Lec13: Final Project and Introduction to `lubridate`**
+* **Lec13: Final Project and Dates & Times with `lubridate`**
     + Final project [guidelines](http://htmlpreview.github.io/?https://raw.githubusercontent.com/Middlebury-Data-Science/Topics/master/Lec13%20Project/project.html). Your project proposal is due Wednesday April 6th (after break) at 11:15.
     + Open this [Quandl](https://www.quandl.com/data/BAVERAGE/USD-USD-BITCOIN-Weighted-Price) link.
     + Files: `Lec13.R` Exercise from "Lec13: Dates and Times with lubridate" folder.
