@@ -7,8 +7,9 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
 
 * **Lec14: Packages & Vignettes and Finishing Dates & Times**
     + <a href="http://rpubs.com/rudeboybert/MATH216_Lec14" target="_blank">Slides</a>: Hadleyverse, R Packages, and Vignettes.
-    + Files: `Lec14.R` Exercise.
-
+    + Files:
+        + `Lec14.R` Exercise.
+        + Example of 3D plot using `plotly`: `3D_plot_ex.Rmd`
 
 
 

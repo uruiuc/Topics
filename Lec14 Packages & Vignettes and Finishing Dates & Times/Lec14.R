@@ -124,7 +124,7 @@ jsm
 int_overlaps(jsm, auckland)
 int_start(jsm)
 int_flip(jsm)
-int_shift(jsm, new_duration(week=12))
+int_shift(jsm, duration(week=12))
 
 x <- c(ymd(20110725, tz = "Pacific/Auckland"), ymd(20110901, tz = "Pacific/Auckland"))
 x
