@@ -10,6 +10,8 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
     + Files:
         + `Lec14.R` Exercise.
         + Example of 3D plot using `plotly`: `3D_plot_ex.Rmd`
+* **Lec16: Shiny**
+    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec16" target="_blank">Slides</a>: Shiny.
 
 
 
