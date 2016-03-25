@@ -3,6 +3,16 @@
 The course syllabus (and setup instructions) can be found [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
 
+### Week 7: 4/4 - 4/8
+
+* **Lec17: GIS and Shapefiles**
+    + 
+
+
+
+
+
+
 ### Week 6: 3/21 - 3/25
 
 * **Lec14: Packages & Vignettes and Finishing Dates & Times**
