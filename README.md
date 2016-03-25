@@ -11,6 +11,8 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
         + `Lec14.R` Exercise.
         + Example of 3D plot using `plotly`: `3D_plot_ex.Rmd`
 * **Lec16: Shiny**
+    + [xkcd on GitHub](http://explainxkcd.com/wiki/index.php/1597:_Git).
+    + [`datacamp.com`](http://www.datacamp.com) resource for learning R/Python in browser.
     + <a href="http://rpubs.com/rudeboybert/MATH216_Lec16" target="_blank">Slides</a>: Shiny.
 
 

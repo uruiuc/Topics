@@ -6,78 +6,103 @@ date: Friday 2016/3/25
 
 
 
+
+
+
 Intro to Shiny
 ========================================================
 
 Today we will create **interactive** web applications via Shiny.  Shiny allows
 you to do so without knowing HTML, JavaScript, CSS, etc...
 
-For the rest of this talk, if you see `USERNAME`, replace this with your
+For the rest of this talk, if you see **`USERNAME`**, replace this with your
 Middlebury login.
 
 
 
-Chief Components
+
+
+Shiny Approaches
 ========================================================
 
-There are two chief components building a Shiny app:
+There are many ways to create a Shiny App
 
-* `inputPanel`:  Where your app takes **inputs** and stores them in an object
-called `input`.  Ex: text, numerical values, sliders, radio buttons, etc.
-* `renderSOMETHING`: After processing the inputs and data, Shiny **renders** an
-output: plots, table, text, etc.
+1. R Markdown: New File -> R Markdown... -> Shiny -> either a document or slides
+1. Single File App: New File -> Shiny Web App -> Single File `app.R`
+1. Multiple File App (allows a more split organization): New File -> Shiny Web
+App -> Multiple File `ui.R`/`server.R`
+
+...but they all share certain components. We focus on the 2nd.
 
 
 
 
 
-Create New Shiny App
+Shared Components
 ========================================================
 
-We won't be harnessing the full power of Shiny (i.e. using `server.R` and `ui.R` files),
-but rather a simplified version using R Markdown.
+1. `UI` user interface component: what the user sees
+    + `Panel`: organize the layout
+    + `SOMETHINGInput`:  App takes inputs and saves them in `input`. Ex: text, numerical values, sliders, radio buttons, etc.
+    + `renderSOMETHING`: Shiny renders an output. Ex: plots, table, text, etc.
+2. `server`: the R code that does the work behind the scenes
+
+Then run it!
 
 
 
 
 
-
-Example:  Input Panel
+New Shiny App
 ========================================================
 
-The `inputPanel( ... )` section takes in two inputs (separated by a comma):
+Let's create a new single file Shiny app `app.R`:
 
-* `selectInput()` which assigns a value to `n_breaks` based on a selection menu, formats the input box, and selects 20 as the default option.
-* `sliderInput()` which assigns a value to `bw_adjust` based on a slider, formats the input box, and sets 1 as the default value.
-
-
-
+* New File -> Shiny Web App...
+* Call it `testing` and "single file" application type.
+* Click on "Run App"
 
 
-Example:  Input Panel
+
+
+
+UI Component: Set Panels
 ========================================================
 
-Note:
+* Use to say layout and organization of inputs and outputs section
+* Section 5 of cheat sheet, on back
 
-* All possible `inputPanel()` options are listed in "Widgets" on the cheatsheet.
+
+
+
+
+
+UI Component: Get Inputs
+========================================================
+
+* `sliderInput()` assign a value to `bins` based on a slider
+* All possible input options are listed in "Widgets" on the cheatsheet.
 * Type `?selectInput`, for example, to get a sense for the arguments.
 
 
 
 
 
-Example:  Rendering Output
+UI Component: Render Outputs
 ========================================================
 
-The `renderPlot({ ... })` plots a histogram of the `eruptions` from the Old Faithful Geyser data set `faithful`.
-
-Note:
-
-* The inputted `n_breaks` and `bw_adjust`, are stored within the `input`.  For example, to interactively use `n_breaks`, we need to specify `input$n_breaks`.
-* There are curly braces in the `renderPlot({})`
+* `plotOutput("distPlot")` renders the output defined in the `server` section. The `server` section does the 
 * All possible rendering options are listed in "render functions" on the cheatsheet
-* Each type of rendering must be done separately
 
+
+
+
+
+Server Component: R Code
+========================================================
+
+* Whatever you are going to output needs to be assigned to an object `output`
+* Described on front of cheat sheet
 
 
 
@@ -96,7 +121,7 @@ resources dedicated to each user.
 
 
 
-Uploading Files to Middlebury Shiny Server
+Uploading Files to Midd Shiny Server
 ========================================================
 
 Mac:
@@ -112,7 +137,7 @@ Windows:
 
 
 
-Uploading Files to Middlebury Shiny Server
+Uploading Files to Midd Shiny Server
 ========================================================
 
 Once logged in:
@@ -131,41 +156,55 @@ The URL for the Shiny App is
 
 
 
-Today's Exercise: Babynames Shiny App
-========================================================
-
-Using `babynames.Rmd`
-
-* Add a menu input option that allows you to specify the color of the smoother
-line.
-* Add a radio button so that the user has the option can limit consideration to
-only one `sex`.
-
-and publish to the Middlebury server under the URL [http://shiny.middlebury.edu/YOUR_MIDD_USERNAME/Babynames/](http://shiny.middlebury.edu/YOUR_MIDD_USERNAME/Babynames/)
-
-
-
-
-
 Installing Packages
 ========================================================
 
-For now, I'm investigating if this can be done easier:
+For now, this is only way I know; I'm investigating if this can be easier.
 
 * RStudio menu bar -> Tools -> Shell...
 * Type `ssh USERNAME@shiny.middlebury.edu`
 * Type `R`.
 * From R, type `install.packages("ggplot2")` for example
 * Select a CRAN mirror in the United States.
+* Say yes to prompts about installing in a new library.
 * After you've installed all the necessary packages, close the window.
+
+
+
+
+
+Today's Exercise: Publish Shiny App
+========================================================
+
+First 
+
+* Publish your app to the Middlebury server under the URL [http://shiny.middlebury.edu/USERNAME/testing/](http://shiny.middlebury.edu/USERNAME/testing/) by copying the `testing` folder into the `ShinyApps` folder on the server
+* Test that you can access it from a browser.
+
+
+
+
+
+Today's Exercise: Publish Shiny App
+========================================================
+
+Second
+
+* Change the histogram in the `app.R` file to be a ggplot, but keep the slider
+so that it sets the `bins` argument in `geom_histogram()`.
+* Test it locally on your computer.
+* Once it works, install `ggplot2` and `dplyr` on Shiny Server.
+* Update `app.R` to be the new app.
+* Test that you can access it from a browser.
+
+
 
 
 
 Other Resources 
 ========================================================
 
-* Slides 
-* Check out an online tutorial on the RStudio webpage
+* RStudio tutorial slides `shiny_slides.pdf` in `Lec16 Shiny` folder.
+* Online tutorial on the RStudio webpage
 [http://shiny.rstudio.com/tutorial/](http://shiny.rstudio.com/tutorial/).
-
 
