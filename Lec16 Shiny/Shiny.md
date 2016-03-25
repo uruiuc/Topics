@@ -145,13 +145,10 @@ Once logged in:
 * Go into the folder `ShinyApps`
 * Create a folder with the name of your Shiny App
 
-For example, I have a folder called `Testing` with a file called `app.R` that
-contains the R code for the Shiny App.
 
-The URL for the Shiny App is
-* [http://shiny.middlebury.edu/aykim/Testing/](http://shiny.middlebury.edu/aykim/Testing/)
-* which auto-redirects to [https://shiny.middlebury.edu:3838/aykim/Testing](https://shiny.middlebury.edu:3838/aykim/Testing)
-
+The URL any Shiny App `APPNAME` is
+* [http://shiny.middlebury.edu/USERNAME/APPNAME/](http://shiny.middlebury.edu/USERNAME/APPNAME/)
+* which auto-redirects to [https://shiny.middlebury.edu:3838/USERNAME/APPNAME](https://shiny.middlebury.edu:3838/USERNAME/APPNAME)
 
 
 
@@ -164,7 +161,7 @@ For now, this is only way I know; I'm investigating if this can be easier.
 * RStudio menu bar -> Tools -> Shell...
 * Type `ssh USERNAME@shiny.middlebury.edu`
 * Type `R`.
-* From R, type `install.packages("ggplot2")` for example
+* Type `install.packages("ggplot2")` for example
 * Select a CRAN mirror in the United States.
 * Say yes to prompts about installing in a new library.
 * After you've installed all the necessary packages, close the window.
