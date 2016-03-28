@@ -6,6 +6,9 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
 ### Week 7: 4/4 - 4/8
 
 * **Lec17: GIS and Shapefiles**
+    + Guest lecture by [Patrick
+    Culbert](http://www.middlebury.edu/academics/geog/faculty/node/495656)
+    Teaching Fellow in Geography
     + 
 
 
@@ -21,9 +24,12 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
         + `Lec14.R` Exercise.
         + Example of 3D plot using `plotly`: `3D_plot_ex.Rmd`
 * **Lec16: Shiny**
-    + [xkcd on GitHub](http://explainxkcd.com/wiki/index.php/1597:_Git).
-    + [`datacamp.com`](http://www.datacamp.com) resource for learning R/Python in browser.
     + <a href="http://rpubs.com/rudeboybert/MATH216_Lec16" target="_blank">Slides</a>: Shiny.
+    + Files: `Lec14_lubridate_solutions.R` Solutions.
+    + Other:
+        + [xkcd on GitHub](http://explainxkcd.com/wiki/index.php/1597:_Git).
+        + [`datacamp.com`](http://www.datacamp.com) resource for learning R/Python in browser.
+
 
 
 
