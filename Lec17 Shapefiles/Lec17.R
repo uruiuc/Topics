@@ -98,3 +98,11 @@ ggplot(map_df, aes(x=long, y=lat, group=group)) +
   coord_map() +
   geom_polygon(aes(fill=log10(AWATER))) +
   geom_path()
+
+
+
+
+# Exercise ----------------------------------------------------------------
+
+# Create an account on socialexplorer.com and start figuring out how to download
+# census data.

@@ -6,9 +6,8 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
 ### Week 7: 4/4 - 4/8
 
 * **Lec17: GIS and Shapefiles**
-    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec17" target="_blank">Slides</a>
-    + Guest lecture by [Patrick Culbert](http://www.middlebury.edu/academics/geog/faculty/node/495656) Teaching Fellow in Geography
     + Files:
+        + Guest lecture by [Patrick Culbert](http://www.middlebury.edu/academics/geog/faculty/node/495656) Teaching Fellow in Geography [`GIS_Raster_Vector.pdf`](https://github.com/Middlebury-Data-Science/Topics/raw/master/Lec17%20Shapefiles/GIS_Raster_Vector.pdf)
         + `Lec17.R` Exercise.
 
 
