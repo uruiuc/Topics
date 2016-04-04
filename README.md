@@ -6,7 +6,10 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
 ### Week 7: 4/4 - 4/8
 
 * **Lec17: GIS and Shapefiles**
+    + <a href="http://rpubs.com/rudeboybert/MATH216_Lec17" target="_blank">Slides</a>
     + 
+    + Files:
+        + `Lec17.R` Exercise.
 
 
 
