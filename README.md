@@ -7,16 +7,21 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
 
 * **Lec17: GIS and Shapefiles**
     + Files:
-        + Guest lecture by [Patrick Culbert](http://www.middlebury.edu/academics/geog/faculty/node/495656) Teaching Fellow in Geography [`GIS_Raster_Vector.pdf`](https://github.com/Middlebury-Data-Science/Topics/raw/master/Lec17%20Shapefiles/GIS_Raster_Vector.pdf)
+        + Guest lecture by [Patrick
+        Culbert](http://www.middlebury.edu/academics/geog/faculty/node/495656)
+        Teaching Fellow in Geography:
+        [`GIS_Raster_Vector.pdf`](https://github.com/Middlebury-Data-Science/Topics/raw/master/Lec17%20Shapefiles/GIS_Raster_Vector.pdf)
         + `Lec17.R` Exercise.
 * **HW-2 Discussion**
     + In lab discussion
-    + Files
+    + Files 
     [`HW-2_Albert_Notes.Rmd`](https://raw.githubusercontent.com/Middlebury-Data-Science/HW-2/master/HW-2_Albert_Notes.Rmd).
     Please save this file in your `HW-2` folder and Knit. Don't forget to ensure
-    you have all necessary packages. If this doesn't work, you can follow along [here](http://rpubs.com/rudeboybert/MATH216_HW2_Discussion).
+    you have all necessary packages. If this doesn't work, you can follow along
+    [here](http://rpubs.com/rudeboybert/MATH216_HW2_Discussion).
 * **Lec18: Leaflet Package**
     + Files:
+        + <a href="http://rpubs.com/rudeboybert/MATH216_Lec18" target="_blank">Slides</a>: Open Street Map, Leaflet.
         + `Lec18.R` Exercise.
 
 
