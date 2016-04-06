@@ -1,6 +1,7 @@
 # Lecture Topics
 
-The course syllabus (and setup instructions) can be found [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
+The course syllabus (and setup instructions) can be found
+[here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
 
 ### Week 7: 4/4 - 4/8

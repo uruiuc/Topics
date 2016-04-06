@@ -3,11 +3,7 @@ Leaflet for Interactive Maps
 author: Albert Y. Kim
 date: Friday 2016/4/8
 
-```{r, echo=FALSE}
-library(dplyr)
-library(ggplot2)
-library(leaflet)
-```
+
 
 
 
