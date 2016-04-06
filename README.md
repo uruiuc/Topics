@@ -16,6 +16,8 @@ The course syllabus (and setup instructions) can be found [here](http://rudeboyb
     Please save this file in your `HW-2` folder and Knit. Don't forget to ensure
     you have all necessary packages. If this doesn't work, you can follow along [here](http://rpubs.com/rudeboybert/MATH216_HW2_Discussion).
 * **Lec18: Leaflet Package**
+    + Files:
+        + `Lec18.R` Exercise.
 
 
 

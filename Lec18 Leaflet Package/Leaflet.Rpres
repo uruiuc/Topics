@@ -1,0 +1,28 @@
+Leaflet for Interactive Maps
+========================================================
+author: Albert Y. Kim
+date: Friday 2016/4/8
+
+```{r, echo=FALSE}
+library(dplyr)
+library(ggplot2)
+library(leaflet)
+```
+
+
+
+
+
+Open Street Maps
+========================================================
+
+Today we will create **interactive** web applications via Shiny.  Shiny allows
+you to do so without knowing HTML, JavaScript, CSS, etc...
+
+For the rest of this talk, if you see **`USERNAME`**, replace this with your
+Middlebury login.
+
+
+
+
+
