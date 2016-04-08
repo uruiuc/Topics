@@ -95,9 +95,12 @@ leaflet() %>%
 # Adding Vector Data ------------------------------------------------------
 # https://rstudio.github.io/leaflet/shapes.html
 
-# Assuming your current working directory is set to where the VT shapefile is.
-# Note the use of readOGR is a little different here than above:
-VT <- readOGR("tl_2015_50_tract.shp", layer = "tl_2015_50_tract", verbose = FALSE)
+# Change the directory below to reflect where your shapefile from last lecture
+# is. If this doesn't work, then navigate to the directory that contains this
+# file and set the working directory. Also, the use of readOGR is a little
+# different here than the last lecture.
+VT <- readOGR("/Users/aykim/Downloads/tl_2015_50_tract/tl_2015_50_tract.shp", 
+              layer = "tl_2015_50_tract", verbose = FALSE)
 
 # The shapefile is loaded in R as a sp Package SpatialPolygonsDataFrame
 # i.e. it has polygon info, and then for each polygon the data. The way you 
