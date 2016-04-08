@@ -9,44 +9,7 @@ library(leaflet)
 
 
 
-# Loading Shapefiles ------------------------------------------------------
-
-# 1. Either by setting the path
-shapefile_path <- "/Users/rudeboybert/Downloads/tl_2015_50_tract/"
-map_obj <- readOGR(dsn = shapefile_path, layer = "tl_2015_50_tract")
-
-# 2. Or by setting your current working directory:
-map_obj <- readOGR(dsn = ".", layer = "tl_2015_50_tract")
-
-
-
-# sp Package Object -------------------------------------------------------
-# The shapefile is loaded in R as a sp Package SpatialPolygonsDataFrame
-# i.e. it has polygon info, and then for each polygon the data. The way you 
-# access the data is via the @ operator
-class(map_obj)
-map_obj@data
-
-# We can plot it in base R as well as ggplot below
-plot(map_obj, axes=TRUE)
-
-
-
-# Convert Shapefile to ggplot Data Frame and Plot--------------------------
-map_obj$id <- rownames(map_obj@data)
-map_points <- fortify(map_obj, region="id")
-map_df <- inner_join(map_points, map_obj@data, by="id")
-
-ggplot(map_df, aes(x=long, y=lat, group=group)) +
-  labs(x="longitude", y="latitude", title="Vermont Census Tracts") +
-  coord_map() +
-  geom_polygon(fill="white") +
-  geom_path()
-
-
-
 # Leaflet Basics ----------------------------------------------------------
-
 # Set up the base, just like using the function ggplot(). We see nothing shows
 # up:
 m <- leaflet()
@@ -136,6 +99,15 @@ leaflet() %>%
 # Note the use of readOGR is a little different here than above:
 VT <- readOGR("tl_2015_50_tract.shp", layer = "tl_2015_50_tract", verbose = FALSE)
 
+# The shapefile is loaded in R as a sp Package SpatialPolygonsDataFrame
+# i.e. it has polygon info, and then for each polygon the data. The way you 
+# access the data is via the @ operator
+class(VT)
+VT@data
+
+# We can plot sp package objects in base R as well.
+plot(VT, axes=TRUE)
+
 # To add the VT shapefile, we need to specify it in the leaflet() call
 leaflet(VT) %>%
   addTiles()
@@ -150,19 +122,17 @@ leaflet(VT) %>%
   addTiles() %>% 
   addPolylines(color="black", weight=1)
 
-# Much like ggplot, we can map variables to aesthetics
-leaflet(VT) %>%
-  addTiles() %>%
-  addPolygons(
-    color = ~colorQuantile("YlOrRd", VT$AWATER)(AWATER)
-  )
-
 # Type ?addPolylines to see the full list of "geoms" and their arguments
 
 
 
-# Shiny -------------------------------------------------------------------
-# It also syncs seemlessly with Shiny: https://rstudio.github.io/leaflet/shiny.html
+
+# Exercise ----------------------------------------------------------------
+# Like in Lec17, see if you can plot the equivalent of a geom_polygon where
+# we map AWATER (water area) to each of the census tracts, using a shades of
+# blue where darker means more water. Use the examples in
+# https://rstudio.github.io/leaflet/shapes.html
+
 
 
 
