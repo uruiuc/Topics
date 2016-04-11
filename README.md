@@ -8,10 +8,11 @@ The course syllabus (and setup instructions) can be found
 
 * **Lec18: Spatial Autocorrelation**
     + Files:
-        + <a href="http://rpubs.com/rudeboybert/MATH216_Lec19" target="_blank">Slides</a>: Open Street Map, Leaflet.
+        + <a href="http://rpubs.com/rudeboybert/MATH216_Lec19" target="_blank">Slides</a>: Spatial Autocorrelation.
         + `Lec19.R` Exercise.
         + `tract2010.zip` zip file of Multnomah Country, Oregon shapefiles. 
-
+        + <a href="https://www.youtube.com/watch?v=iZhEcRrMA-M" target="_blank">Near and Far</a>
+* **HW-4**
 
 
 
