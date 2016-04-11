@@ -93,7 +93,7 @@ plot(PDX_nb, PDX_coord, pch = 19, cex = 0.3, lwd=0.5, add = TRUE)
 n <- nrow(PDX_data)
 noise <- runif(n, min=0, max=1)
 ggplot(data=NULL, aes(x=noise)) +
-  geom_histogram(binwidth=0.1)
+  geom_histogram(boundary=0, binwidth=0.1)
 
 # We then compute Moran's I using Y_i = noise.  Look at the statistic and 
 # p-value for multiple runs of the following two lines. Again, run this a few 
