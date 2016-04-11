@@ -4,6 +4,22 @@ The course syllabus (and setup instructions) can be found
 [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
 
+### Week 8: 4/11 - 4/15
+
+* **Lec18: Spatial Autocorrelation**
+    + Files:
+        + <a href="http://rpubs.com/rudeboybert/MATH216_Lec19" target="_blank">Slides</a>: Open Street Map, Leaflet.
+        + `Lec19.R` Exercise.
+        + `tract2010.zip` zip file of Multnomah Country, Oregon shapefiles. 
+
+
+
+
+
+
+
+
+
 ### Week 7: 4/4 - 4/8
 
 * **Lec17: GIS and Shapefiles**
