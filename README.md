@@ -4,6 +4,16 @@ The course syllabus (and setup instructions) can be found
 [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
 
+### Week 9: 4/18 - 4/22
+* **Lec19: String Manipulation**
+
+
+
+
+
+
+
+
 ### Week 8: 4/11 - 4/15
 
 * **Lec18: Spatial Autocorrelation**
