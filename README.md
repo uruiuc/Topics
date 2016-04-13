@@ -13,7 +13,7 @@ The course syllabus (and setup instructions) can be found
         + `tract2010.zip` zip file of Multnomah Country, Oregon shapefiles. 
         + <a href="https://www.youtube.com/watch?v=iZhEcRrMA-M" target="_blank">Near and Far</a>
 * **HW-4**
-    + Also determined order of presentations
+    + Also determined order of presentations using `presentations.R` in the `Misc` folder and Enrique's favorite number 7 as the random number generator seed value.
 
 |Monday 5/9 |Wednesday 5/11 |Friday 5/13 |Monday 5/16 |
 |:----------|:--------------|:-----------|:-----------|
