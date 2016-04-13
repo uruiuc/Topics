@@ -2,6 +2,8 @@ library(dplyr)
 library(ggplot2)
 library(rgeos)
 library(rgdal)
+library(maptools)
+
 
 
 # Go to data.gov and download the Shapefile ZIP file for the census tracts in
