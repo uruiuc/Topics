@@ -1,5 +1,7 @@
 # Presentations
 library(dplyr)
+library(knitr)
+
 
 # Set random number generator seed value
 set.seed(7)
@@ -17,9 +19,3 @@ order <- order %>%
 # Present results
 names(order) <- c("Monday 5/9", "Wednesday 5/11", "Friday 5/13", "Monday 5/16")
 order
-
-Monday 5/9 Wednesday 5/11 Friday 5/13 Monday 5/16
-   Shaojin         Alison       Kyler         Joy
-   Delaney         Andrew     Enrique      Philip
-   Aminata          Jacob          Mo      Carter
-                Christian                    Paul
