@@ -2,7 +2,7 @@
 library(dplyr)
 
 # Set random number generator seed value
-set.seed(76)
+set.seed(7)
 
 # Ensure balanced sampling so that at least 3 each day.
 class <- c("Alison", "Aminata", "Andrew", "Carter", "Christian", "Delaney",
@@ -18,4 +18,8 @@ order <- order %>%
 names(order) <- c("Monday 5/9", "Wednesday 5/11", "Friday 5/13", "Monday 5/16")
 order
 
-
+Monday 5/9 Wednesday 5/11 Friday 5/13 Monday 5/16
+   Shaojin         Alison       Kyler         Joy
+   Delaney         Andrew     Enrique      Philip
+   Aminata          Jacob          Mo      Carter
+                Christian                    Paul
