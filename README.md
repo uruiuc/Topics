@@ -5,7 +5,9 @@ The course syllabus (and setup instructions) can be found
 
 ### Week 9: 4/18 - 4/22
 
-* **Lec20: String Manipulation**
+* **Lec20: Final Project and String Manipulation**
+    + Final Project GitHub repo to be forked is available. Please submit your
+    projects there.
     + Files:
         + <a href="http://rpubs.com/rudeboybert/MATH216_Lec20" target="_blank">Slides</a>: String Manipulation.
         + `Lec20.R` Exercise.

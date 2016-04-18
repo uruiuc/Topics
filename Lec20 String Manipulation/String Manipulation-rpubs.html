@@ -757,33 +757,59 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Character Data in Programming</h3>
+<h3>Strings</h3>
 <div class="slideContent" >
+<p>In computer science a <strong>(character) string</strong> is any finite sequence of characters (i.e.,
+letters, numerals, symbols and punctuation marks).</p>
+
+<p>In R they are denoted with double quotation marks.</p>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Handling Text in R</h3>
+<h3>stringr Package</h3>
 <div class="slideContent" >
-<p>Text is computer programming are called <strong>(character) strings</strong>.  Like handling 
-dates, handling text is a non-glamorous, but necessary, task.  The <code>stringr</code>
-package tries to alleviate this problem.</p>
+<p>Like handling dates, handling text is a non-glamorous but necessary task.  The
+<code>stringr</code> package tries to alleviate this problem.</p>
 
-<p>Note we are doing very basic manipulations. If ever you need to do very advanced
-string manipulations, languages like Python and Ruby are better suited.</p>
+<p><code>stringr</code> simplifies string operations by eliminating options that you don’t need 95% of 
+the time. i.e. not the most powerful, but tradeoff is gain in simplicity. </p>
+
+<p>If ever you need to do very advanced string manipulations, languages like Python
+and Ruby are better suited for the task.</p>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Today&#x27;s Exercise</h3>
+<h3>Auto-Complete</h3>
+<div class="slideContent" >
+<p><code>stringr</code> uses consistent function names and arguments i.e. almost all functions
+in the <code>stringr</code> package start with <code>str_</code>.</p>
+
+<p>So if you forget a function, type <code>str_</code> in the console and press TAB to get a
+list of auto-completions.</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>stringr Package</h3>
 <div class="slideContent" >
 <ul>
-<li>Getting familiar with all functions in the <code>stringr_vignette.Rmd</code> file.</li>
-<li>For each function, play with the Examples at the end of the help file.</li>
-<li>Things get tricky at the &ldquo;Regular Expressions&rdquo; section, so don&#39;t worry if things don&#39;t make complete sense just yet.</li>
-<li>Sorry, there is no cheatsheet for this package.</li>
+<li><code>stringr</code> provides pattern matching functions to <code>str</code>
+
+<ul>
+<li><code>_detect</code></li>
+<li><code>_locate</code></li>
+<li><code>_extract</code></li>
+<li><code>_match</code></li>
+<li><code>_replace</code></li>
+<li><code>_split</code></li>
+</ul></li>
+<li>Note that many of these funcitions also have an <code>_all</code> version. See
+<code>str_replace()</code> and <code>str_replace_all</code></li>
 </ul>
 
 </div>

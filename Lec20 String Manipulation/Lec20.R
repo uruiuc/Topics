@@ -164,7 +164,10 @@ str_detect(string=text, pattern="Simon")
 # not a vector
 text <-c("Simon", "My name is Simon.  Simon Favreau-Lessard", "Hyo-Kyung")
 str_extract(string=text, pattern="Simon")
-str_extract_all(string=text, pattern="Simon")
+# Note here the output is a "list", not a vector
+output <- str_extract_all(string=text, pattern="Simon")
+output
+output[[1]]
 
 # Matching strings:
 strings <- c(" 219 733 8965", "329-293-8753 ", "banana", "595 794 7569",
@@ -184,6 +187,8 @@ str_sub(string=fruit, start=6, end=18)
 # Locate the exact position of a string:  input is a vector
 fruit <- c("apple", "banana", "pear", "pineapple")
 str_locate(string=fruit, pattern="na")
+
+# Again, the output here is a list
 output <- str_locate_all(string=fruit, pattern="na")
 output
 output[[2]]
