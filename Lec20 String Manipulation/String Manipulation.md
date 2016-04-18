@@ -1,0 +1,45 @@
+String Manipulation
+========================================================
+author: Albert Y. Kim
+date: Monday April 18, 2016
+
+
+
+
+
+
+
+Character Data in Programming
+========================================================
+
+
+
+
+
+Handling Text in R
+========================================================
+
+Text is computer programming are called **(character) strings**.  Like handling 
+dates, handling text is a non-glamorous, but necessary, task.  The `stringr`
+package tries to alleviate this problem.
+
+Note we are doing very basic manipulations. If ever you need to do very advanced
+string manipulations, languages like Python and Ruby are better suited.
+
+
+
+
+
+
+
+
+
+Today's Exercise
+========================================================
+
+* Getting familiar with all functions in the `stringr_vignette.Rmd` file.
+* For each function, play with the Examples at the end of the help file.
+* Things get tricky at the "Regular Expressions" section, so don't worry if things don't make complete sense just yet.
+* Sorry, there is no cheatsheet for this package.
+
+
