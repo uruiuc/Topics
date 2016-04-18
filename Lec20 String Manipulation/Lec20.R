@@ -22,7 +22,7 @@ PI
 # your document.
 name <- "BORT"
 number_to_order <- 76
-paste("We need to order", number_to_order, name, "more novelty license plates.")
+paste("We need to order", number_to_order, "more", name, "novelty license plates.")
 
 # paste() is very useful when you want to automate the creation of strings.  For
 # example say you want to produce a daily chart of bitcoin prices with a title
