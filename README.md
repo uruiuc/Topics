@@ -11,7 +11,13 @@ The course syllabus (and setup instructions) can be found
     + Files:
         + <a href="http://rpubs.com/rudeboybert/MATH216_Lec20" target="_blank">Slides</a>: String Manipulation.
         + `Lec20.R` Exercise.
-
+* **HW-3 Discussion**
+    + In lab discussion
+    + Files 
+    [`HW-3_Albert_Notes.Rmd`](https://raw.githubusercontent.com/Middlebury-Data-Science/HW-3/master/HW-3_Albert_Notes.Rmd).
+    Please save this file in your `HW-3` folder and Knit. Don't forget to ensure
+    you have all necessary packages. If this doesn't work, you can follow along
+    [here](http://rpubs.com/rudeboybert/MATH216_HW3_Discussion).
 
 
 
