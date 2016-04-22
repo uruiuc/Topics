@@ -22,7 +22,7 @@ some_tweets
 # point.  Search "37.781157, -122.39720" in google maps to see where the center
 # of the search is.
 some_tweets <- searchTwitter("prince", n=100, lang="en", 
-                             geocode='37.781157, -122.39720, 100mi')
+                             geocode='37.781157,-122.39720,100mi')
 some_tweets
 
 # Press tab after the dollar sign to see what info is stored for each list
