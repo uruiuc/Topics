@@ -28,8 +28,10 @@ Mining Twitter Data
 * Who lets their location be revealed
 
 i.e. the sample is non-random, so it is not representative of the population as
-a whole, and hence the results of the sample are **not generalizable** to the
+a whole, and hence the results of the sample are not generalizable to the
 entire US population.
+
+But there is still useful info nonetheless.
 
 
 
