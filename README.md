@@ -18,7 +18,10 @@ The course syllabus (and setup instructions) can be found
     Please save this file in your `HW-3` folder and Knit. Don't forget to ensure
     you have all necessary packages. If this doesn't work, you can follow along
     [here](http://rpubs.com/rudeboybert/MATH216_HW3_Discussion).
-
+* **Lec21: Twitter Data**
+    + Files:
+        + <a href="http://rpubs.com/rudeboybert/MATH216_Lec21" target="_blank">Slides</a>: String Manipulation.
+        + `Lec21.R` Exercise.
 
 
 
