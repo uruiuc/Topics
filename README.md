@@ -3,6 +3,21 @@
 The course syllabus (and setup instructions) can be found
 [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
+
+### Week 10: 4/25 - 4/29
+
+* **Lec22: tm Package**
+    + Files:
+        + <a href="http://rpubs.com/rudeboybert/MATH216_Lec22" target="_blank">Slides</a>: Text Mining Package.
+        + `Lec22.R` Exercise.
+
+
+
+
+
+
+
+
 ### Week 9: 4/18 - 4/22
 
 * **Lec20: Final Project and String Manipulation**
@@ -20,7 +35,7 @@ The course syllabus (and setup instructions) can be found
     [here](http://rpubs.com/rudeboybert/MATH216_HW3_Discussion).
 * **Lec21: Twitter Data**
     + Files:
-        + <a href="http://rpubs.com/rudeboybert/MATH216_Lec21" target="_blank">Slides</a>: String Manipulation.
+        + <a href="http://rpubs.com/rudeboybert/MATH216_Lec21" target="_blank">Slides</a>: Twitter Data.
         + `Lec21.R` Exercise.
 
 
