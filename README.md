@@ -16,7 +16,8 @@ The course syllabus (and setup instructions) can be found
         + Wed 5/4: HW-4 discussion in Wilson Lab.
         + Fri 5/6: No lecture, but rather open office hours. Please send an email to schedule.
         + Mon 5/9 through Mon 5/16: Presentations.
-
+* **HW-5**
+    + [Doodle poll](http://doodle.com/poll/iatnxghit7ut7e5p) for signing up to open office hours.
 
 
 
