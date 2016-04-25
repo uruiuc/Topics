@@ -10,6 +10,12 @@ The course syllabus (and setup instructions) can be found
     + Files:
         + <a href="http://rpubs.com/rudeboybert/MATH216_Lec22" target="_blank">Slides</a>: Text Mining Package.
         + `Lec22.R` Exercise.
+    + Remaining schedule
+        + Wed 4/27: HW-5 assigned
+        + Fri 4/29 and Mon 5/2: No lecture, but rather open office hours. Please send an email to schedule.
+        + Wed 5/4: HW-4 discussion in Wilson Lab.
+        + Fri 5/6: No lecture, but rather open office hours. Please send an email to schedule.
+        + Mon 5/9 through Mon 5/16: Presentations.
 
 
 
