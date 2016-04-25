@@ -1,0 +1,74 @@
+Text Mining Package
+========================================================
+author: Albert Y. Kim
+date: Monday 2016/04/25
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+suppressPackageStartupMessages(library(tm))
+```
+
+```{r set-options, echo=FALSE, cache=FALSE}
+options(width = 50)
+```
+
+
+
+Choice of Language Matters
+========================================================
+
+[How MLB Announcers Favor American Players Over Foreign
+Ones](http://www.theatlantic.com/entertainment/archive/2012/08/how-mlb-announcers-favor-american-players-over-foreign-ones/261265/)
+
+
+
+Issue with Text Data: Character Encoding
+========================================================
+
+Working with text data can be a real PITA, as there are many different
+[character
+encodings](http://www.iana.org/assignments/character-sets/character-sets.xhtml),
+i.e. how characters are represented on a computer.
+
+Converting between them can be a real nuissance as some characters don't
+translate well, like accented letters, spaces, punctuation.
+
+We'll use UTF-8.
+
+
+
+Natural Language Processing
+========================================================
+
+Natural language processing (NLP) is a field of computer science, artificial
+intelligence, and linguistics concerned with the interactions between computers
+and human (natural) languages.
+
+
+
+tm Package
+========================================================
+
+The `tm` (text mining) package puts many such tools at our disposal, including
+
+* Word stemming:  constitution, constitutional, constitutions
+* stopword removal
+```{r}
+stopwords("english")
+```
+
+
+
+Today's Exercise
+========================================================
+We're revisiting OkCupid essay data. Using:
+
+* the `stringr` and `tm` packages
+* basic set operations in R
+
+We're going to evaluate both
+
+* the top 500 words used by men, that ARE NOT in the top 500 words used by women
+* the top 500 words used by women, that ARE NOT in the top 500 words used by men
+
+
