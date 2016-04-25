@@ -85,13 +85,7 @@ old_man <- old_man %>%
 # After
 old_man
 
-# Document Term Matrix
-dtm <- DocumentTermMatrix(old_man)
-# There are 2830 "documents", i.e. sentences and 2518 words (after the stemming)
-dim(dtm)
 
-# Actually look at matrix.
-inspect(dtm)
 
 
 # Same as last time:
@@ -126,6 +120,16 @@ wordcloud(old_man, scale=c(5,0.5), max.words=25, random.order=FALSE,
 # Check out the help file for the wordcloud() function to see what all these
 # parameters do
 ?wordcloud
+
+# Document Term Matrix
+dtm <- DocumentTermMatrix(old_man)
+# There are 2830 "documents", i.e. sentences and 2518 words (after the stemming)
+dim(dtm)
+
+# Actually look at matrix.
+inspect(dtm)
+
+
 
 
 
@@ -229,3 +233,5 @@ female_words <- subset(essays, sex == "f") %>%
 setdiff(male_words, female_words)
 # Words in the male top 500 that weren't in the females' top 500:
 setdiff(female_words, male_words)
+
+
