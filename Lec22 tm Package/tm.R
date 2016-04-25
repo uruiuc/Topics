@@ -85,6 +85,15 @@ old_man <- old_man %>%
 # After
 old_man
 
+# Document Term Matrix
+dtm <- DocumentTermMatrix(old_man)
+# There are 2830 "documents", i.e. sentences and 2518 words (after the stemming)
+dim(dtm)
+
+# Actually look at matrix.
+inspect(dtm)
+
+
 # Same as last time:
 # -Split the entire vector using spaces i.e. cut it up into words
 # -str_split() returns a list, and not a vector of words.  Convert this to a vector
