@@ -4,6 +4,28 @@ The course syllabus (and setup instructions) can be found
 [here](http://rudeboybert.github.io/pages/teaching/courses/MATH216/2016-02.html).
 
 
+
+
+
+### Week 11: 5/2 - 5/6
+
+* **Monday 5/2**
+    + No Lecture. [Doodle poll](http://doodle.com/poll/iatnxghit7ut7e5p) for signing up to open office hours.
+* **HW-4 Discussion**
+    + In lab discussion
+    + Files. Please save these files in your `HW-4` folder and Knit. Don't forget to ensure
+you have all necessary packages. If this doesn't work, you can follow along
+[here](http://rpubs.com/rudeboybert/MATH216_HW4_Discussion). 
+        + [`HW-4_Albert_Notes.Rmd`](https://raw.githubusercontent.com/Middlebury-Data-Science/HW-4/master/HW-4_Albert_Notes.Rmd).
+        + [`COUNTY.csv`](https://raw.githubusercontent.com/Middlebury-Data-Science/HW-4/master/COUNTY.csv)
+        + [`R11168779_SL140.csv`](https://raw.githubusercontent.com/Middlebury-Data-Science/HW-4/master/R11168779_SL140.csv)
+* **Friday 5/6**
+    + No Lecture. [Doodle poll](http://doodle.com/poll/iatnxghit7ut7e5p) for signing up to open office hours.
+
+
+
+
+
 ### Week 10: 4/25 - 4/29
 
 * **Lec22: tm Package**
