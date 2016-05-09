@@ -7,6 +7,23 @@ The course syllabus (and setup instructions) can be found
 
 
 
+### Week 12: 5/9 - 5/13
+
+* **Monday 5/9**
+    + Delaney's [presentation](https://docs.google.com/presentation/d/18MnimPhU_fkdKD3YHVMYSvQ-QODQXKhWEtaasa-K1oA/edit?ts=5730a23f#slide=id.g111eeedda4_0_118).
+    + Course [feedback survey](https://docs.google.com/forms/d/1zi1-DwintN2SybU3Z-NI0UG-punWmGy4iK1RLxY0Llw/edit).
+* **Wednesday 5/11**
+
+
+
+
+
+
+
+
+
+
+
 ### Week 11: 5/2 - 5/6
 
 * **Monday 5/2**
