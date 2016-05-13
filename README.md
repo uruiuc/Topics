@@ -12,7 +12,9 @@ The course syllabus (and setup instructions) can be found
 * **Monday 5/9**
     + Delaney's [presentation](https://docs.google.com/presentation/d/18MnimPhU_fkdKD3YHVMYSvQ-QODQXKhWEtaasa-K1oA/edit?ts=5730a23f#slide=id.g111eeedda4_0_118).
     + Course [feedback survey](https://docs.google.com/forms/d/1zi1-DwintN2SybU3Z-NI0UG-punWmGy4iK1RLxY0Llw/edit).
-* **Wednesday 5/11**
+* **Friday 5/13** Note on the ethics of Open Data Science
+    + [OkCupid Data](http://www.vox.com/2016/5/12/11666116/70000-okcupid-users-data-release)
+    + [Blog Post](https://ironholds.org/blog/when-science-goes-bad-consent-data-and-doubling-down-on-the-internet/)
 
 
 
